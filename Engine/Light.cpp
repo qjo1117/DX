@@ -28,6 +28,7 @@ void Light::FinalUpdate()
 void Light::SetLightUpdate()
 {
     m_light.position = GetTransform()->GetWorldPosition();
+    m_light.direction = GetTransform()->GetLocalRotation();
     
     DEVICE->SetLight(m_iIndex, (D3DLIGHT9*)&m_light);
     DEVICE->LightEnable(m_iIndex, TRUE);

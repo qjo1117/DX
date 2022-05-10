@@ -15,9 +15,15 @@ Object::~Object()
 
 }
 
+void Object::Init()
+{
+	m_pTransform->SetObj(shared_from_this());
+
+}
+
 void Object::Awake()
 {
-
+	
 
 }
 
@@ -31,7 +37,7 @@ void Object::Update()
 
 void Object::Render()
 {
-	if (m_pMesh != nullptr) {
+	if (m_bMesh == true && m_pMesh != nullptr) {
 		DEVICE->SetMaterial((D3DMATERIAL9*)&m_material);
 		DEVICE->SetTransform(D3DTS_WORLD, &GetTransform()->GetLocalToWorldMatrix());
 		m_pMesh->DrawSubset(0);
@@ -56,9 +62,4 @@ void Object::FinalUpdate()
 void Object::SetName(const wstring& p_strName)
 {
 	m_strName = p_strName;
-}
-
-void Object::Init()
-{
-	m_pTransform->SetObj(shared_from_this());
 }

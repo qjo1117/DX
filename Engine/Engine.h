@@ -8,6 +8,7 @@
 #include "Input.h"
 #include "Device.h"
 #include "SceneManager.h"
+#include "EditorManager.h"
 
 
 /* ------------------
@@ -48,7 +49,7 @@ public:
 
 	void ResizeWindow(int32 width, int32 height);
 	void SetWindowTitle(const wstring& title);
-
+	WindowInfo& GetInfo() { return m_info; }
 
 private:
 	/* ------------ Variable --------------- */

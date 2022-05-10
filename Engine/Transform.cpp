@@ -18,21 +18,33 @@ void Transform::FinalUpdate()
 	//}
 	//_change = false;
 
-	Matrix matScale;
-	matScale = Utils::CreateScaling(m_localScale);
-	Matrix matRotation = Utils::CreateRotationX(m_localRotation.x);
-	matRotation *= Utils::CreateRotationY(m_localRotation.y);
-	matRotation *= Utils::CreateRotationZ(m_localRotation.z);
-	Matrix matTranslation = Utils::CreateTranslation(m_localPosition);
 
-	m_matLocal = matScale * matRotation * matTranslation;
+	m_matLocal = GetMatrixScale() * GetMatrixRotation() * GetMatrixTranslation();
 	m_matWorld = m_matLocal;
 
 	/* ----- 부모가 있을경우 계층구조를 이용해준다. ----- */
-	Ref<Transform> parent = GetParent().lock();
+	Ref<Transform> parent = GetParent();
 	if (parent != nullptr) {
 		m_matWorld *= GetParentWorldMatrix(parent);
 	}
+}
+
+Matrix Transform::GetMatrixTranslation()
+{
+	return Utils::CreateTranslation(m_localPosition);
+}
+
+Matrix Transform::GetMatrixRotation()
+{
+	Matrix matRotation = Utils::CreateRotationX(m_localRotation.x);
+	matRotation *= Utils::CreateRotationY(m_localRotation.y);
+	matRotation *= Utils::CreateRotationZ(m_localRotation.z);
+	return matRotation;
+}
+
+Matrix Transform::GetMatrixScale()
+{
+	return Utils::CreateScaling(m_localScale);
 }
 
 void Transform::SetObj(Ref<class Object> p_pObj)
@@ -50,6 +62,7 @@ void Transform::SetParent(Ref<Transform> p_pParent)
 	if (p_pParent == nullptr) {
 		return;
 	}
+	// TODO : 새로 Parent를 연결하면 지우는 작업도 해줘야한다.
 	m_pParent = p_pParent;
 	p_pParent->m_vecChilds.push_back(GetObj()->GetTransform());
 }

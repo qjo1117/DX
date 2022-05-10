@@ -13,6 +13,8 @@ Camera::~Camera()
 void Camera::Awake()
 {
     Object::Awake();
+    INPUT->AddKey("MouseBack", 'Z');
+    INPUT->AddKey("MouseForward", 'C');
 }
 
 void Camera::Update()
@@ -21,16 +23,10 @@ void Camera::Update()
     {
         Vec3 move = Utils::Zero();
         float speed = 100.0f;
-        if (INPUT->KeyPress("Right")) {
-            move.x += speed;
-        }
-        if (INPUT->KeyPress("Left")) {
-            move.x -= speed;
-        }
-        if (INPUT->KeyPress("Forward")) {
+        if (INPUT->KeyPress("MouseForward")) {
             move.z += speed;
         }
-        if (INPUT->KeyPress("Back")) {
+        if (INPUT->KeyPress("MouseBack")) {
             move.z -= speed;
         }
 

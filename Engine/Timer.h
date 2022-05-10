@@ -11,6 +11,8 @@ enum class TIMER_STATE : uint16
 };
 
 
+#define TIMER GET_SINGLE(Timer)
+
 /*----------
 	Timer
 -----------*/

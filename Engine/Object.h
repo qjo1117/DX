@@ -26,11 +26,17 @@ enum class OBJECT_TYPE : uint32
 
 struct Material
 {
-	D3DCOLORVALUE   diffuse = Utils::Black();
-	D3DCOLORVALUE   ambient = Utils::Black();
+	D3DCOLORVALUE   diffuse = Utils::White();
+	D3DCOLORVALUE   ambient = Utils::White();
 	D3DCOLORVALUE   specular = Utils::Black();
 	D3DCOLORVALUE   emissive = Utils::Black();
 	float           power = 0.0f;   
+
+	void SetSimpleColor(const Color& color, float power = 1.0f) {
+		diffuse = color;
+		ambient = color * power;
+		specular = Utils::White();
+	}
 };
 
 class Object : public enable_shared_from_this<Object>
@@ -41,7 +47,7 @@ public:
 
 public:
 	/* ------- Update Function ------- */
-	void Init();
+	virtual void Init();
 	virtual void Awake();
 	virtual void Start();
 	virtual void Update();
@@ -58,9 +64,22 @@ public:
 
 	uint32 GetType() { return static_cast<uint32>(m_eType); }
 	Material& GetMaterial() { return m_material; }
+
+	void OnMesh() { m_bMesh = true; }		// ±ÍÂúÀ»¶§
+	void OffMesh() { m_bMesh = false; }		// ¾µ·Á°í¿ä
+	bool GetIsMesh() { return m_bMesh; }	// ±âº»ÇïÆÛ
+	void SetIsMesh(bool p_bMesh) { m_bMesh = p_bMesh; }
+
+	void OnEnable() { m_bEnable = true; }		// ±ÍÂúÀ»¶§
+	void OffEnable() { m_bEnable = false; }		// ¾µ·Á°í¿ä
+	bool GetIsEnable() { return m_bEnable; }	// ±âº»ÇïÆÛ
+	void SetIsEnable(bool p_bEnable) { m_bEnable = p_bEnable; }
+
 protected:
 	LPD3DXMESH m_pMesh = nullptr;
 	Material m_material = {};
+	bool m_bMesh = true;
+	bool m_bEnable = true;
 
 	Ref<Transform> m_pTransform = make_shared<Transform>();
 	wstring m_strName;
@@ -68,4 +87,3 @@ protected:
 private:
 	static uint64 Count;
 };
-

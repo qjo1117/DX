@@ -23,6 +23,9 @@ public:
 	void Render();
 
 	Ref<class Camera> GetMainCamera();
+
+	template<typename T>
+	Ref<T> CreateObject();
 public:
 	/* ----- Helper Function ----- */
 	void AddObject(Ref<Object> p_pObject);
@@ -42,3 +45,11 @@ protected:
 	wstring m_strName = L"BaseScene";
 };
 
+template<typename T>
+Ref<T> Scene::CreateObject()
+{
+	Ref<T> obj = make_shared<T>();
+	static_pointer_cast<T>(obj)->Init();
+	AddObject(obj);
+	return obj;
+}

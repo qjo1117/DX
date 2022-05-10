@@ -14,9 +14,10 @@ public:
 	virtual void End() override;
 
 private:
-	void CreatePlanat(const wstring& p_strName, const Vec3& pos, const Vec3& scaling, float speed, const Color& color, const wstring& parent = L"");
-	
+	Ref<class Planet> CreatePlanat(const wstring& p_strName, const Vec3& pos,float scaling, float speed, const Color& color, const wstring& parent = L"");
+
 private:
 	Ref<class Light> m_pPointLight;
+	Ref<class Spaceship> m_pPlayer;
 };
 

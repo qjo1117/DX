@@ -34,6 +34,9 @@ void Scene::Awake()
 void Scene::Start()
 {
 	for (Ref<Object>& obj : m_vecObjects) {
+		if (obj->GetIsEnable() == false) {
+			continue;
+		}
 		obj->Start();
 	}
 }
@@ -41,6 +44,9 @@ void Scene::Start()
 void Scene::Update()
 {
 	for (Ref<Object>& obj : m_vecObjects) {
+		if (obj->GetIsEnable() == false) {
+			continue;
+		}
 		obj->Update();
 	}
 }
@@ -48,6 +54,9 @@ void Scene::Update()
 void Scene::FinalUpdate()
 {
 	for (Ref<Object>& obj : m_vecObjects) {
+		if (obj->GetIsEnable() == false) {
+			continue;
+		}
 		obj->FinalUpdate();
 	}
 
@@ -70,6 +79,9 @@ void Scene::End()
 void Scene::Render()
 {
 	for (Ref<Object>& obj : m_vecObjects) {
+		if (obj->GetIsEnable() == false) {
+			continue;
+		}
 		obj->Render();
 	}
 }

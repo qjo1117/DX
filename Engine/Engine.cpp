@@ -21,11 +21,12 @@ int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
 
 	/* ------ Mgr Init ----- */
 	if (GET_SINGLE(Device)->Init(hWnd) == false) {
-		ASSERT_CRASH("Not Create Device")
+		ASSERT_CRASH("Not Create Device");
 	}
 
 	GET_SINGLE(Timer)->Init(hWnd);
 	GET_SINGLE(Input)->Init(hWnd);
+	GET_SINGLE(EditorManager)->Init(hWnd);
 
 
 	DEVICE->SetRenderState(D3DRS_ZENABLE, TRUE);
@@ -40,7 +41,7 @@ int32 Engine::Update()
 	GET_SINGLE(Timer)->Update();
 	GET_SINGLE(Input)->Update();
 	GET_SINGLE(SceneManager)->Update();
-
+	GET_SINGLE(EditorManager)->Update();
 
 
 	return 0;
@@ -52,9 +53,8 @@ int32 Engine::Render()
 
 	{
 		DEVICE->BeginScene();
-
 		GET_SINGLE(SceneManager)->Render();
-
+		GET_SINGLE(EditorManager)->Render();
 		DEVICE->EndScene();
 	}
 
@@ -65,6 +65,7 @@ int32 Engine::Render()
 
 int32 Engine::End()
 {
+	GET_SINGLE(EditorManager)->End();
 	GET_SINGLE(SceneManager)->End();
 
 	GET_SINGLE(Device)->End();

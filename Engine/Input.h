@@ -36,6 +36,8 @@ public:
 
 	void Clear();
 
+	POINT GetMousePos() { return m_mousePos; }
+
 private:
 	Ref<KeyInfo> FindKey(const string& strKey) const;
 

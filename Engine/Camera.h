@@ -12,7 +12,7 @@ struct CameraInfo
 	Vec3 viewUp = Utils::Up();			// 이건 고정
 
 	float Near = 1.0f;
-	float Far = 1000.0f;
+	float Far = 10000.0f;
 	float fov = D3DX_PI / 4.0f;
 	float aspect = 1.0f;
 };
@@ -27,6 +27,13 @@ public:
 	virtual void Update();
 	virtual void FinalUpdate();
 
+public:
+	CameraInfo& GetInfo() { return m_info; }
+
+	Matrix GetMatrixView() { return m_matView; }
+	Matrix GetMatrixProjection() { return m_matProj; }
+
+private:
 	void ViewMatrixUpdate();
 	void ProjMatrixUpdate();
 

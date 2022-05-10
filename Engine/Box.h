@@ -19,6 +19,7 @@ public:
 	virtual ~Box();
 
 public:
+	virtual void Init() override;
 	virtual void Awake() override;
 	virtual void Start() override;
 	virtual void Update() override;

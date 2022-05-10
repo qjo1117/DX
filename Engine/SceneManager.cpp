@@ -16,6 +16,7 @@ void SceneManager::Update()
 
 void SceneManager::Render()
 {
+
 	if (m_pCurrentScene) {
 		m_pCurrentScene->Render();
 	}
