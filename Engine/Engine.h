@@ -8,8 +8,8 @@
 #include "Input.h"
 #include "Device.h"
 #include "SceneManager.h"
-#include "EditorManager.h"
 
+#include "../Editor/EditorManager.h"
 
 /* ------------------
 		Engine

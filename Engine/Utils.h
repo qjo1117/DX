@@ -264,4 +264,10 @@ public:
 		return D3DXCOLOR{ 1.0f, 1.0f, 1.0f, 1.0f };
 	}
 
+
+	template<typename T>
+	int32 EnumToInt32(T type)
+	{
+		return static_cast<uint32>(type);
+	}
 };

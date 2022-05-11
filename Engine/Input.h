@@ -10,6 +10,7 @@ struct KeyInfo
 };
 
 
+
 #define INPUT GET_SINGLE(Input)
 
 /*-----------
@@ -37,6 +38,10 @@ public:
 	void Clear();
 
 	POINT GetMousePos() { return m_mousePos; }
+
+public:
+	/* --------- Editor ------------ */
+	void __Editor__InputTool();
 
 private:
 	Ref<KeyInfo> FindKey(const string& strKey) const;

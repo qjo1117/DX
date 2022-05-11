@@ -9,8 +9,6 @@
 #include <memory.h>
 #include <tchar.h>
 
-
-
 #include "../Engine/EnginePch.h"
 #include "Engine.h"
 

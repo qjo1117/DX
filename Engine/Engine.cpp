@@ -26,8 +26,9 @@ int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
 
 	GET_SINGLE(Timer)->Init(hWnd);
 	GET_SINGLE(Input)->Init(hWnd);
+#ifdef DEF_EDITOR
 	GET_SINGLE(EditorManager)->Init(hWnd);
-
+#endif
 
 	DEVICE->SetRenderState(D3DRS_ZENABLE, TRUE);
 
@@ -41,8 +42,10 @@ int32 Engine::Update()
 	GET_SINGLE(Timer)->Update();
 	GET_SINGLE(Input)->Update();
 	GET_SINGLE(SceneManager)->Update();
-	GET_SINGLE(EditorManager)->Update();
 
+#ifdef DEF_EDITOR
+	GET_SINGLE(EditorManager)->Update();
+#endif
 
 	return 0;
 }
@@ -53,8 +56,11 @@ int32 Engine::Render()
 
 	{
 		DEVICE->BeginScene();
+
 		GET_SINGLE(SceneManager)->Render();
+#ifdef DEF_EDITOR
 		GET_SINGLE(EditorManager)->Render();
+#endif
 		DEVICE->EndScene();
 	}
 
@@ -66,8 +72,9 @@ int32 Engine::Render()
 int32 Engine::End()
 {
 	GET_SINGLE(EditorManager)->End();
+#ifdef DEF_EDITOR
 	GET_SINGLE(SceneManager)->End();
-
+#endif
 	GET_SINGLE(Device)->End();
 
 

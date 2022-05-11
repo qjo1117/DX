@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Input.h"
 
+#include "../Editor/EditorManager.h"
+
 bool Input::Init(HWND hWnd)
 {
 	/* ------ ¸ÊÇÎ ------ */
@@ -12,11 +14,19 @@ bool Input::Init(HWND hWnd)
 	AddKey('D', "Right");
 	AddKey('A', "Left");
 
+	//EDITOR->AddEditor([]() { INPUT->__Editor__InputTool(); });
+
     return true;
 }
 
 void Input::Update()
 {
+	HWND current_hWnd = GetFocus();
+	if (current_hWnd != m_hWnd) {
+		return;
+	}
+
+
 	for (auto item : m_mapKeys) {
 		Ref<KeyInfo>& info = item.second;
 		int iPushCount = 0;
@@ -98,4 +108,16 @@ Ref<KeyInfo> Input::FindKey(const string& strKey) const
 	}
 
 	return iter->second;
+}
+
+void Input::__Editor__InputTool()
+{
+	ImGui::Begin(u8"Input Tool");
+
+	for (auto& item : m_mapKeys) {
+		string text = (item.first + " : " + item.second->name);
+		ImGui::Text(text.c_str());
+	}
+
+	ImGui::End();
 }

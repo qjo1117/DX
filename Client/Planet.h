@@ -2,6 +2,9 @@
 
 #include "Sphere.h"
 
+/*----------
+	Planet
+-----------*/
 class Planet :
     public Sphere
 {

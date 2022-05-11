@@ -54,5 +54,7 @@ private:
 	int32 m_iMode = PlayerMode::One;
 
 	bool m_bRotation = true;
+
+	PUBLIC_PROPERTY(int, temp);
 };
 

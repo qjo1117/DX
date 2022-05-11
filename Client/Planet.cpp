@@ -14,7 +14,6 @@ Planet::~Planet()
 }
 
 // 대충 해야할꺼 썬을 기준으로 공전을 따로 셋팅해준다.
-
 void Planet::Init()
 {
 	Sphere::Init();

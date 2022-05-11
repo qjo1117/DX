@@ -22,6 +22,9 @@
     <Filter Include="Engine\imgui">
       <UniqueIdentifier>{181d084d-094f-46f3-93ef-5cec05a753d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{cdf1bc7a-7e22-4c4a-b684-9b471d770d06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -105,8 +108,8 @@
     <ClInclude Include="..\Library\Include\ImGui\imgui.h">
       <Filter>Engine\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="EditorManager.h">
-      <Filter>Engine\Core</Filter>
+    <ClInclude Include="ResourcesManager.h">
+      <Filter>Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,8 +176,8 @@
     <ClCompile Include="..\Library\Include\ImGui\imgui_draw.cpp">
       <Filter>Engine\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="EditorManager.cpp">
-      <Filter>Engine\Core</Filter>
+    <ClCompile Include="ResourcesManager.cpp">
+      <Filter>Resources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

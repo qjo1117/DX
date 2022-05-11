@@ -30,9 +30,14 @@
 #include <array>
 #include <functional>
 
+
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_dx9.h"
 #include "ImGui/imgui_impl_win32.h"
+
+#ifdef _DEBUG
+#pragma comment(lib, "Editor.lib")
+#endif
 
 #include "Macro.h"
 #include "type.h"

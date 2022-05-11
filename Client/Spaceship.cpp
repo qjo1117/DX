@@ -14,6 +14,7 @@ void Spaceship::Init()
 {
 	Object::Init();
 	EDITOR->AddEditor([self = static_pointer_cast<Spaceship>(shared_from_this())]() {self->__Editor__Player(); });
+
 }
 
 void Spaceship::Start()
