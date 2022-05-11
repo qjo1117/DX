@@ -30,7 +30,7 @@ void Input::Update()
 	for (auto item : m_mapKeys) {
 		Ref<KeyInfo>& info = item.second;
 		int iPushCount = 0;
-		for (uint64 state : info->vecKeys) {
+		for (uint32 state : info->vecKeys) {
 			if (GetAsyncKeyState(state) & 0x8000) {
 				++iPushCount;
 			}
@@ -112,7 +112,7 @@ Ref<KeyInfo> Input::FindKey(const string& strKey) const
 
 void Input::__Editor__InputTool()
 {
-	ImGui::Begin(u8"Input Tool");
+	ImGui::Begin("Input Tool");
 
 	for (auto& item : m_mapKeys) {
 		string text = (item.first + " : " + item.second->name);

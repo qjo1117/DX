@@ -1,44 +1,39 @@
 ﻿  Box.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Camera.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Input.h(79,1): warning C4311: '형식 캐스트': 'const char *'에서 'DWORD'(으)로 포인터가 잘립니다.
+D:\DX9\DX\Engine\Input.h(79,1): warning C4311: '형식 캐스트': 'const char *'에서 'uint32'(으)로 포인터가 잘립니다.
 D:\DX9\DX\Engine\Camera.cpp(16): message : 컴파일되는 함수 템플릿 인스턴스화 'void Input::AddKey<char[10],char>(const T (&),const char &)'에 대한 참조를 확인하세요.
           with
           [
               T=char [10]
           ]
-D:\DX9\DX\Engine\Input.h(79,1): warning C4302: '형식 캐스트': 'const char *'에서 'DWORD'(으)로 잘립니다.
+D:\DX9\DX\Engine\Input.h(79,1): warning C4302: '형식 캐스트': 'const char *'에서 'uint32'(으)로 잘립니다.
+  Device.cpp
   Engine.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Input.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 D:\DX9\DX\Engine\Input.cpp(34,25): warning C4244: '인수': 'uint64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\DX9\DX\Engine\Input.h(69,1): warning C4311: '형식 캐스트': 'const char *'에서 'uint32'(으)로 포인터가 잘립니다.
+D:\DX9\DX\Engine\Input.h(79): message : 컴파일되는 함수 템플릿 인스턴스화 'void Input::AddKey<char[8]>(const T (&))'에 대한 참조를 확인하세요.
+          with
+          [
+              T=char [8]
+          ]
+D:\DX9\DX\Engine\Input.cpp(12): message : 컴파일되는 함수 템플릿 인스턴스화 'void Input::AddKey<char,char[8]>(const T &,const char (&)[8])'에 대한 참조를 확인하세요.
+          with
+          [
+              T=char
+          ]
+D:\DX9\DX\Engine\Input.h(69,1): warning C4302: '형식 캐스트': 'const char *'에서 'uint32'(으)로 잘립니다.
   Light.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Method.cpp
   Object.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Property.cpp
+  ResourcesManager.cpp
+D:\DX9\DX\Engine\ResourcesManager.h(1,1): warning C4828: 파일에 0x146 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 949).
   Scene.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   SceneManager.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Sphere.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Sphere.cpp(17,64): warning C4244: '인수': 'float'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Sphere.cpp(17,50): warning C4244: '인수': 'float'에서 'UINT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Timer.cpp
   Torus.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Transform.cpp
-D:\DX9\DX\Engine\Utils.h(36,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-D:\DX9\DX\Engine\Utils.h(58,1): warning C4267: '초기화 중': 'size_t'에서 'int32'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  TypeInfo.cpp
   Engine.vcxproj -> D:\DX9\DX\Output\Engine.lib

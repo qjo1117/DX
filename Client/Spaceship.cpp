@@ -28,6 +28,7 @@ void Spaceship::Start()
 	GetTransform()->SetLocalRotation(Utils::Zero());
 	GetTransform()->SetLocalScale(Utils::One() * 3.0f);
 
+
 	Ref<Scene> scene = GET_SINGLE(SceneManager)->GetCurrentScene();
 
 	// HEAD
@@ -203,20 +204,20 @@ void Spaceship::CameraQuterMode()
 	if (m_pCamera == nullptr) {
 		return;
 	}
-	Vec3 pos = Vec3{ 0.0f, 500.0f, -1000.0f };
+	Vec3 pos = Vec3{ 0.0f, 100.0f, -100.0f };
 	m_pCamera->GetTransform()->SetLocalPosition(pos);
 	m_pCamera->GetInfo().look = Utils::Zero();
 }
 
 void Spaceship::__Editor__Player()
 {
-	ImGui::Begin(u8"PlayerEditor");
+	ImGui::Begin("PlayerEditor");
 
-	if (ImGui::Button(u8"One_Mode")) {
+	if (ImGui::Button("One_Mode")) {
 		m_iMode = PlayerMode::One;
 	}
 	ImGui::SameLine();
-	if (ImGui::Button(u8"Quter_Mode")) {
+	if (ImGui::Button("Quter_Mode")) {
 		m_iMode = PlayerMode::Quter;
 	}
 

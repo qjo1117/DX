@@ -15,6 +15,7 @@ public:
 		delete[] buf;
 		return ret;
 	}
+
 	static string Wstr2Str(const wstring& str)
 	{
 		int32 len;
@@ -33,7 +34,7 @@ public:
 	static vector<string> Split(const string& str, char base)
 	{
 		vector<string> ret;
-		int32 size = str.size();
+		int32 size = static_cast<int32>(str.size());
 		string strTemp = "";
 		for (int32 i = 0; i < size; ++i) {
 			if (str[i] == base) {
@@ -55,7 +56,7 @@ public:
 	static vector<wstring> Split(const wstring& p_str, char base)
 	{
 		vector<wstring> ret;
-		int32 size = p_str.size();
+		int32 size = static_cast<int32>(p_str.size());
 		wstring strTemp = L"";
 		for (int32 i = 0; i < size; ++i) {
 			if (p_str[i] == base) {

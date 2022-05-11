@@ -55,6 +55,8 @@ private:
 
 	bool m_bRotation = true;
 
+	GENERATE_CLASS_TYPE_INFO(Spaceship)
+
 	PUBLIC_PROPERTY(int, temp);
 };
 

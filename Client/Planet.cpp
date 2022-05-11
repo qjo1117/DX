@@ -78,9 +78,9 @@ void Planet::SetSpeed(float p_fSpeed)
 
 void Planet::__Editor__Planet()
 {
-	ImGui::Begin(u8"Planet");
+	ImGui::Begin("Planet");
 
-	if (ImGui::Checkbox(u8"Rotation On/Off", &Planet::m_bRotation)) {
+	if (ImGui::Checkbox("Rotation On/Off", &Planet::m_bRotation)) {
 
 	}
 

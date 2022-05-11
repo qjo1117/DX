@@ -29,7 +29,10 @@
 #include <set>
 #include <array>
 #include <functional>
-
+#include <typeinfo>
+#include <concepts>
+#include <string_view>
+#include <cassert>
 
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_dx9.h"
@@ -38,10 +41,6 @@
 #ifdef _DEBUG
 #pragma comment(lib, "Editor.lib")
 #endif
-
-#include "Macro.h"
-#include "type.h"
-
 
 using namespace std;
 
@@ -66,3 +65,12 @@ template<typename T>
 using WRef = weak_ptr<T>;
 
 #include "Utils.h"
+
+/* ------ Reflection ------ */
+#include "TypeInfo.h"
+#include "Method.h"
+
+/* Reflection 추가할때 concept이 들어가기때문에 20버전으로 변경되었습니다. */
+
+#include "Macro.h"
+#include "type.h"

@@ -9,8 +9,8 @@
 struct SphereInfo
 {
 	float radius = 1.0f;
-	float stack = 15.0f;
-	float slice = 15.0f;
+	uint32 stack = 15;
+	uint32 slice = 15;
 };
 
 

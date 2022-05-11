@@ -3,7 +3,7 @@
 struct KeyInfo
 {
 	string name;
-	vector<uint64> vecKeys;
+	vector<uint32> vecKeys;
 	bool bDown = false;
 	bool bPress = false;
 	bool bUp = false;
@@ -66,7 +66,7 @@ inline void Input::AddKey(const T& data)
 	// 일반적인 등록키면 그냥 넣어준다.
 	if (::strcmp(pType, "char") == 0 ||
 		::strcmp(pType, "int") == 0) {
-		m_pCreateKey->vecKeys.push_back((uint64)data);
+		m_pCreateKey->vecKeys.push_back((uint32)data);
 	}
 	else {			// 이름 등록
 		m_pCreateKey->name = data;
@@ -84,7 +84,7 @@ inline void Input::AddKey(const T& data, const Args&... arg)
 
 	if (strcmp(pType, "char") == 0 ||
 		strcmp(pType, "int") == 0) {
-		m_pCreateKey->vecKeys.push_back((DWORD)data);
+		m_pCreateKey->vecKeys.push_back((uint32)data);
 	}
 	else {
 		m_pCreateKey->name = data;

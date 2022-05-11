@@ -84,6 +84,10 @@ protected:
 	Ref<Transform> m_pTransform = make_shared<Transform>();
 	wstring m_strName;
 	OBJECT_TYPE m_eType = OBJECT_TYPE::Object;
+
+private:
+	GENERATE_CLASS_TYPE_INFO(Object)
+
 private:
 	static uint64 Count;
 };

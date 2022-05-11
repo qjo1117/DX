@@ -25,25 +25,16 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{cdf1bc7a-7e22-4c4a-b684-9b471d770d06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils\Utils">
+      <UniqueIdentifier>{6cfdb462-0291-46f4-bf33-0fb28fa10f66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Reflection">
+      <UniqueIdentifier>{de4ea3f9-eff5-42b0-8580-bb0f2accebe7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="framework.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Macro.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="type.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="EnginePch.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Engine\Core</Filter>
@@ -59,9 +50,6 @@
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Box.h">
       <Filter>Object\Shape</Filter>
@@ -111,11 +99,32 @@
     <ClInclude Include="ResourcesManager.h">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="EnginePch.h">
+      <Filter>Utils\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Utils\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>Utils\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Utils\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="type.h">
+      <Filter>Utils\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Utils\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeInfo.h">
+      <Filter>Utils\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="Method.h">
+      <Filter>Utils\Reflection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -178,6 +187,15 @@
     </ClCompile>
     <ClCompile Include="ResourcesManager.cpp">
       <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Utils\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeInfo.cpp">
+      <Filter>Utils\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="Method.cpp">
+      <Filter>Utils\Reflection</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
