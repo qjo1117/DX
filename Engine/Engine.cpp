@@ -22,8 +22,14 @@ int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
 
 	GET_SINGLE(Timer)->Init(hWnd);
 	GET_SINGLE(Input)->Init(hWnd);
+<<<<<<< Updated upstream
 #ifdef DEF_EDITOR
 	GET_SINGLE(EditorManager)->Init(hWnd);
+=======
+
+#ifdef DEF_EDITOR
+	GET_SINGLE(EditorManager)->Init(hWnd, DEVICE);
+>>>>>>> Stashed changes
 #endif
 
 	DEVICE->SetRenderState(D3DRS_ZENABLE, TRUE);
@@ -38,6 +44,13 @@ int32 Engine::Update()
 	GET_SINGLE(Timer)->Update();
 	GET_SINGLE(Input)->Update();
 	GET_SINGLE(SceneManager)->Update();
+<<<<<<< Updated upstream
+=======
+
+#ifdef DEF_EDITOR
+	GET_SINGLE(EditorManager)->Update();
+#endif
+>>>>>>> Stashed changes
 
 #ifdef DEF_EDITOR
 	GET_SINGLE(EditorManager)->Update();
@@ -52,9 +65,15 @@ int32 Engine::Render()
 
 	{
 		DEVICE->BeginScene();
+<<<<<<< Updated upstream
 
 		GET_SINGLE(SceneManager)->Render();
 #ifdef DEF_EDITOR
+=======
+#ifdef DEF_EDITOR
+		GET_SINGLE(SceneManager)->Render();
+#endif
+>>>>>>> Stashed changes
 		GET_SINGLE(EditorManager)->Render();
 #endif
 		DEVICE->EndScene();
@@ -67,8 +86,13 @@ int32 Engine::Render()
 
 int32 Engine::End()
 {
-	GET_SINGLE(EditorManager)->End();
 #ifdef DEF_EDITOR
+	GET_SINGLE(EditorManager)->End();
+<<<<<<< Updated upstream
+#ifdef DEF_EDITOR
+=======
+#endif
+>>>>>>> Stashed changes
 	GET_SINGLE(SceneManager)->End();
 #endif
 	GET_SINGLE(Device)->End();

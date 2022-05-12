@@ -9,7 +9,13 @@
 #include <memory.h>
 #include <tchar.h>
 
+<<<<<<< Updated upstream
+=======
+#include "ImGui/imgui.h"
+#include "ImGui/imgui_impl_dx9.h"
+#include "ImGui/imgui_impl_win32.h"
+
+>>>>>>> Stashed changes
 #include "../Engine/EnginePch.h"
-#include "Engine.h"
 
 #pragma comment(lib, "Engine.lib")

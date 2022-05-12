@@ -34,6 +34,7 @@
 #include <string_view>
 #include <cassert>
 
+<<<<<<< Updated upstream
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_dx9.h"
 #include "ImGui/imgui_impl_win32.h"
@@ -41,6 +42,11 @@
 #ifdef _DEBUG
 #pragma comment(lib, "Editor.lib")
 #endif
+=======
+#include "Macro.h"
+#include "type.h"
+
+>>>>>>> Stashed changes
 
 using namespace std;
 
@@ -66,6 +72,7 @@ using WRef = weak_ptr<T>;
 
 #include "Utils.h"
 
+<<<<<<< Updated upstream
 /* ------ Reflection ------ */
 #include "TypeInfo.h"
 #include "Method.h"
@@ -74,3 +81,8 @@ using WRef = weak_ptr<T>;
 
 #include "Macro.h"
 #include "type.h"
+=======
+#include "../Editor/pch.h"
+
+#pragma comment(lib, "Editor.lib")
+>>>>>>> Stashed changes

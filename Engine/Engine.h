@@ -8,6 +8,13 @@
 #include "Input.h"
 #include "Device.h"
 #include "SceneManager.h"
+<<<<<<< Updated upstream
+=======
+
+#include "EditorManager.h"
+
+
+>>>>>>> Stashed changes
 
 #include "../Editor/EditorManager.h"
 
