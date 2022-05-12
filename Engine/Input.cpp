@@ -29,7 +29,7 @@ void Input::Update()
 
 	for (auto item : m_mapKeys) {
 		Ref<KeyInfo>& info = item.second;
-		int iPushCount = 0;
+		int32 iPushCount = 0;
 		for (uint32 state : info->vecKeys) {
 			if (GetAsyncKeyState(state) & 0x8000) {
 				++iPushCount;

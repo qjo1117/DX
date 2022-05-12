@@ -14,7 +14,12 @@ MenuEditor::~MenuEditor()
 
 }
 
-void MenuEditor::Present()
+void MenuEditor::Show()
 {
+	ImGui::Button("Hello");
+}
 
+void MenuEditor::End()
+{
+	
 }

@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
@@ -13,6 +12,30 @@
     </ClCompile>
     <ClCompile Include="SceneObjectEditor.cpp">
       <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectoryEditor.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\Include\ImGui\imgui_tables.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\Include\ImGui\imgui_widgets.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\Include\ImGui\imgui.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\Include\ImGui\imgui_demo.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\Include\ImGui\imgui_draw.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\Include\ImGui\imgui_impl_dx9.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Library\Include\ImGui\imgui_impl_win32.cpp">
+      <Filter>IMGUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -37,86 +60,32 @@
     <ClInclude Include="SceneObjectEditor.h">
       <Filter>Editor</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Main">
-      <UniqueIdentifier>{dae83a6a-04f0-4926-a0fa-897869a06af8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Editor">
-      <UniqueIdentifier>{a70a5666-eda5-45ad-9703-5df6d7030667}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-=======
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Main</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_tables.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_widgets.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_demo.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_draw.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_impl_dx9.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_impl_win32.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorManager.cpp">
-      <Filter>Editor\Manager</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Main</Filter>
+    <ClInclude Include="DirectoryEditor.h">
+      <Filter>Editor</Filter>
     </ClInclude>
     <ClInclude Include="..\Library\Include\ImGui\imstb_rectpack.h">
-      <Filter>ImGui</Filter>
+      <Filter>IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\Library\Include\ImGui\imstb_textedit.h">
-      <Filter>ImGui</Filter>
+      <Filter>IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\Library\Include\ImGui\imstb_truetype.h">
-      <Filter>ImGui</Filter>
+      <Filter>IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\Library\Include\ImGui\imconfig.h">
-      <Filter>ImGui</Filter>
+      <Filter>IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\Library\Include\ImGui\imgui.h">
-      <Filter>ImGui</Filter>
+      <Filter>IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\Library\Include\ImGui\imgui_impl_dx9.h">
-      <Filter>ImGui</Filter>
+      <Filter>IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\Library\Include\ImGui\imgui_impl_win32.h">
-      <Filter>ImGui</Filter>
+      <Filter>IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\Library\Include\ImGui\imgui_internal.h">
-      <Filter>ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="EditorManager.h">
-      <Filter>Editor\Manager</Filter>
+      <Filter>IMGUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -126,12 +95,8 @@
     <Filter Include="Editor">
       <UniqueIdentifier>{a70a5666-eda5-45ad-9703-5df6d7030667}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Editor\Manager">
-      <UniqueIdentifier>{8cd3c4fd-5838-44cc-8f19-1df8a29d5216}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ImGui">
-      <UniqueIdentifier>{cd071cf3-6242-4bee-9092-4ea25c37b732}</UniqueIdentifier>
+    <Filter Include="IMGUI">
+      <UniqueIdentifier>{8fac879f-8844-4ad4-be5c-e3d4760c1497}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
->>>>>>> Stashed changes
 </Project>

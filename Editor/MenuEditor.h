@@ -9,23 +9,26 @@ enum class MENU_TYPE
 	END
 };
 
-class MenuEditor
+class MenuEditor : public IEditor
 {
 public:
 	MenuEditor();
 	virtual ~MenuEditor();
 
-	CREATE_EDITOR_FUNC(Present)
-	static void Present();
+	virtual void Show() override;
+	virtual void End() override;
 
-
-	static void On()
+	MENUITEM("Menu/Editor", MenuEditor, Present);
+	static void Present()
 	{
-		ImGui::Begin("Text");
-		ImGui::End();
+		m_pInstance = EDITOR->GetWindow<MenuEditor>();
+		m_pInstance->Title = "Editor";
 	}
 
+
 private:
+	inline static MenuEditor* m_pInstance;
+
 	array<bool, static_cast<uint32>(MENU_TYPE::END)> m_arrCheck;
 };
 

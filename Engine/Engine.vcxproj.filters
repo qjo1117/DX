@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
@@ -17,12 +16,6 @@
     <Filter Include="Object\Shape">
       <UniqueIdentifier>{09fda651-b27e-43a0-8406-644225b278c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Object\몰루%3f">
-      <UniqueIdentifier>{7973c486-0a0f-4122-ae7f-b98fadaf6e0c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\imgui">
-      <UniqueIdentifier>{181d084d-094f-46f3-93ef-5cec05a753d9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{cdf1bc7a-7e22-4c4a-b684-9b471d770d06}</UniqueIdentifier>
     </Filter>
@@ -31,6 +24,12 @@
     </Filter>
     <Filter Include="Utils\Reflection">
       <UniqueIdentifier>{de4ea3f9-eff5-42b0-8580-bb0f2accebe7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Group">
+      <UniqueIdentifier>{7973c486-0a0f-4122-ae7f-b98fadaf6e0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Plugin">
+      <UniqueIdentifier>{a1c60b55-2939-407e-bcac-5db5f5f01081}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -59,7 +58,7 @@
       <Filter>Object\Shape</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Object\몰루%3f</Filter>
+      <Filter>Object\Group</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Engine\Core</Filter>
@@ -68,34 +67,10 @@
       <Filter>Engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
-      <Filter>Object\몰루%3f</Filter>
+      <Filter>Object\Group</Filter>
     </ClInclude>
     <ClInclude Include="Torus.h">
       <Filter>Object\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\Include\ImGui\imgui_impl_dx9.h">
-      <Filter>Engine\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\Include\ImGui\imgui_impl_win32.h">
-      <Filter>Engine\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\Include\ImGui\imgui_internal.h">
-      <Filter>Engine\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\Include\ImGui\imstb_rectpack.h">
-      <Filter>Engine\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\Include\ImGui\imstb_textedit.h">
-      <Filter>Engine\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\Include\ImGui\imstb_truetype.h">
-      <Filter>Engine\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\Include\ImGui\imconfig.h">
-      <Filter>Engine\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Library\Include\ImGui\imgui.h">
-      <Filter>Engine\imgui</Filter>
     </ClInclude>
     <ClInclude Include="ResourcesManager.h">
       <Filter>Resources</Filter>
@@ -124,6 +99,15 @@
     <ClInclude Include="Method.h">
       <Filter>Utils\Reflection</Filter>
     </ClInclude>
+    <ClInclude Include="DirectoryManager.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginManager.h">
+      <Filter>Engine\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="StdPch.h">
+      <Filter>Utils\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -151,7 +135,7 @@
       <Filter>Object\Shape</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Object\몰루%3f</Filter>
+      <Filter>Object\Group</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Engine\Core</Filter>
@@ -160,31 +144,10 @@
       <Filter>Engine\Core</Filter>
     </ClCompile>
     <ClCompile Include="Light.cpp">
-      <Filter>Object\몰루%3f</Filter>
+      <Filter>Object\Group</Filter>
     </ClCompile>
     <ClCompile Include="Torus.cpp">
       <Filter>Object\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_impl_dx9.cpp">
-      <Filter>Engine\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_impl_win32.cpp">
-      <Filter>Engine\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_tables.cpp">
-      <Filter>Engine\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_widgets.cpp">
-      <Filter>Engine\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui.cpp">
-      <Filter>Engine\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_demo.cpp">
-      <Filter>Engine\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Library\Include\ImGui\imgui_draw.cpp">
-      <Filter>Engine\imgui</Filter>
     </ClCompile>
     <ClCompile Include="ResourcesManager.cpp">
       <Filter>Resources</Filter>
@@ -198,132 +161,11 @@
     <ClCompile Include="Method.cpp">
       <Filter>Utils\Reflection</Filter>
     </ClCompile>
-  </ItemGroup>
-=======
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <Filter Include="Utils">
-      <UniqueIdentifier>{3ce00676-3c5f-4f0e-b822-ddc8a606cf06}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine">
-      <UniqueIdentifier>{965cda76-d93b-4e60-bad2-5def45ba3749}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Core">
-      <UniqueIdentifier>{2e6eda2b-d975-468c-9855-594f298d512d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object">
-      <UniqueIdentifier>{ace513ef-9399-445f-9273-1f63ef6ab749}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\Shape">
-      <UniqueIdentifier>{09fda651-b27e-43a0-8406-644225b278c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Object\몰루%3f">
-      <UniqueIdentifier>{7973c486-0a0f-4122-ae7f-b98fadaf6e0c}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="framework.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Macro.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="type.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="EnginePch.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Device.h">
-      <Filter>Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>Object\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>Object\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Object\몰루%3f</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Engine\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Light.h">
-      <Filter>Object\몰루%3f</Filter>
-    </ClInclude>
-    <ClInclude Include="Torus.h">
-      <Filter>Object\Shape</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
+    <ClCompile Include="DirectoryManager.cpp">
       <Filter>Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Engine\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Device.cpp">
-      <Filter>Engine\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>Object\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>Object\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Object\몰루%3f</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>Engine\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Engine\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Light.cpp">
-      <Filter>Object\몰루%3f</Filter>
-    </ClCompile>
-    <ClCompile Include="Torus.cpp">
-      <Filter>Object\Shape</Filter>
+    <ClCompile Include="PluginManager.cpp">
+      <Filter>Engine\Plugin</Filter>
     </ClCompile>
   </ItemGroup>
->>>>>>> Stashed changes
 </Project>

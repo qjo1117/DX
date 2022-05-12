@@ -2,7 +2,8 @@
 #include "Engine.h"
 #include "Box.h"
 #include "Camera.h"
-
+#include "DirectoryManager.h"
+#include "PluginManager.h"
 
 
 int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
@@ -22,14 +23,10 @@ int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
 
 	GET_SINGLE(Timer)->Init(hWnd);
 	GET_SINGLE(Input)->Init(hWnd);
-<<<<<<< Updated upstream
+	GET_SINGLE(DirectoryManager)->Init();
+	GET_SINGLE(PluginManager)->Init();
 #ifdef DEF_EDITOR
 	GET_SINGLE(EditorManager)->Init(hWnd);
-=======
-
-#ifdef DEF_EDITOR
-	GET_SINGLE(EditorManager)->Init(hWnd, DEVICE);
->>>>>>> Stashed changes
 #endif
 
 	DEVICE->SetRenderState(D3DRS_ZENABLE, TRUE);
@@ -44,14 +41,8 @@ int32 Engine::Update()
 	GET_SINGLE(Timer)->Update();
 	GET_SINGLE(Input)->Update();
 	GET_SINGLE(SceneManager)->Update();
-<<<<<<< Updated upstream
-=======
-
-#ifdef DEF_EDITOR
-	GET_SINGLE(EditorManager)->Update();
-#endif
->>>>>>> Stashed changes
-
+	GET_SINGLE(DirectoryManager)->Update();
+	GET_SINGLE(PluginManager)->Update();
 #ifdef DEF_EDITOR
 	GET_SINGLE(EditorManager)->Update();
 #endif
@@ -65,15 +56,10 @@ int32 Engine::Render()
 
 	{
 		DEVICE->BeginScene();
-<<<<<<< Updated upstream
 
 		GET_SINGLE(SceneManager)->Render();
+		GET_SINGLE(PluginManager)->Render();
 #ifdef DEF_EDITOR
-=======
-#ifdef DEF_EDITOR
-		GET_SINGLE(SceneManager)->Render();
-#endif
->>>>>>> Stashed changes
 		GET_SINGLE(EditorManager)->Render();
 #endif
 		DEVICE->EndScene();
@@ -88,13 +74,10 @@ int32 Engine::End()
 {
 #ifdef DEF_EDITOR
 	GET_SINGLE(EditorManager)->End();
-<<<<<<< Updated upstream
-#ifdef DEF_EDITOR
-=======
 #endif
->>>>>>> Stashed changes
+	GET_SINGLE(PluginManager)->End();
+	GET_SINGLE(DirectoryManager)->End();
 	GET_SINGLE(SceneManager)->End();
-#endif
 	GET_SINGLE(Device)->End();
 
 

@@ -1,15 +1,28 @@
 #pragma once
 
 #include "Scene.h"
+#include "EditorManager.h"
 
-class SceneObjectEditor
+class SceneObjectEditor :
+	public IEditor
 {
 public:
-	virtual void Present();
+	virtual ~SceneObjectEditor();
+						
+	MENUITEM("Menu/Object_List", SceneObjectEditor, Present);
+	static void Present()
+	{
+		m_pInstance = EDITOR->GetWindow<SceneObjectEditor>();
+		m_pInstance->Title = "OBJECT_LIST";
+	}
+
+	virtual void Show() override;
+	virtual void End() override;
 
 private:
 	Ref<class Scene> m_pScene;
 
-	bool m_bEable = false;
+public:
+	inline static SceneObjectEditor* m_pInstance;
 };
 

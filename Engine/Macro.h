@@ -1,5 +1,6 @@
 #pragma once
 
+#define OUT
 
 /* -------- Simple SingleTon -------- */
 
@@ -37,6 +38,13 @@ static type* GetI()							\
 	}								\
 }
 
+#define SAFEDELETE(ptr)		\
+if (ptr) {					\
+		delete ptr;			\
+}							\
+ptr = nullptr				
+
+
 /* ------------------------------
 			Property
 ------------------------------ */
@@ -45,33 +53,38 @@ static type* GetI()							\
 #define G_PROPERTY(_get) _declspec(property(get = _get))
 #define S_PROPERTY(_set) _declspec(property(set = _set))
 
-#define SETMEMBER(type, member)		void Set##member(const type& p_val) { m_##member = p_val; }     
-#define GETMEMBER(type, member)		const type& Get##member() { return m_##member; }
+#define SETMEMBER(type, member)										\
+public:																\
+	void Set##member(const type& p_val) { m_##member = p_val; }     
+#define GETMEMBER(type, member)										\
+public:																\
+	type& Get##member() { return m_##member; }				
 
-/* ----- 김치삼 교수님께서 알려주신 PROPERTY ----- */
+/* ----- 김치삼 교수님께서 알려주신 PROPERTY (개조 버전) ----- */
+
 #define PUBLIC_PROPERTY(type, member)								\
 public:                                                             \
-type m_##member;                                                    \
-public:                                                             \
 	SETMEMBER(type, member)											\
 	GETMEMBER(type, member)											\
-	PROPERTY(Get##member,  Set##member) type& ##member;
+	PROPERTY(Get##member, Set##member) type& ##member;				\
+public:                                                             \
+	type m_##member                                                 
 
 #define PRIVATE_PROPERTY(type, member)								\
-private:                                                            \
-type m_##member;                                                    \
 public:                                                             \
 	SETMEMBER(type, member)											\
 	GETMEMBER(type, member)											\
-	PROPERTY(Get##member,  Set##member) type& ##member;
+	PROPERTY(Get##member,  Set##member) type& ##member;				\
+private:                                                            \
+	type m_##member                                                
 
 #define PROTECTED_PROPERTY(type, member)							\
-protected:                                                          \
-type m_##member;                                                    \
 public:                                                             \
 	SETMEMBER(type, member)											\
 	GETMEMBER(type, member)											\
-	PROPERTY(Get##member,  Set##member) type& ##member;
+	PROPERTY(Get##member,  Set##member) type& ##member;				\
+protected:                                                          \
+	type m_##member                                                   
 
 /* ------------------------------------------------------------
 	어쩌다보니 Attribute찾다가 property에 대해서 흥미가 돋아서
