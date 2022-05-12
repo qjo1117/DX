@@ -7,10 +7,6 @@
 
 int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
 {
-#pragma region DEBUG
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	//_CrtSetBreakAlloc(287);
-#pragma endregion
 
 
 	m_info.hWnd = hWnd;

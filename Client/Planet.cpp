@@ -22,9 +22,6 @@ void Planet::Init()
 void Planet::Awake()
 {
 	Sphere::Awake();
-	if (m_strName == L"Sun") {
-		EDITOR->AddEditor([self = static_pointer_cast<Planet>(shared_from_this())]() { self->__Editor__Planet(); });
-	}
 
 }
 
@@ -74,15 +71,4 @@ void Planet::End()
 void Planet::SetSpeed(float p_fSpeed)
 {
 	m_fSpeed = p_fSpeed;
-}
-
-void Planet::__Editor__Planet()
-{
-	ImGui::Begin("Planet");
-
-	if (ImGui::Checkbox("Rotation On/Off", &Planet::m_bRotation)) {
-
-	}
-
-	ImGui::End();
 }

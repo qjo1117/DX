@@ -20,8 +20,6 @@ public:
 
 	void SetSpeed(float p_fSpeed);
 
-	void __Editor__Planet();
-
 public:
 	void SetPosition(const Vec3& pos) { m_position = pos; }
 	Vec3 GetPosition() { return m_position; }

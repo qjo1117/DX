@@ -41,8 +41,6 @@ private:
 	void CameraOneMode();
 	void CameraQuterMode();
 
-	void __Editor__Player();
-
 private:
 	vector<Ref<Object>> m_vecParts;
 
@@ -55,8 +53,7 @@ private:
 
 	bool m_bRotation = true;
 
-	GENERATE_CLASS_TYPE_INFO(Spaceship)
-
-	PUBLIC_PROPERTY(int, temp);
+	//GENERATE_CLASS_TYPE_INFO(Spaceship)
+	//PUBLIC_PROPERTY(int, temp);
 };
 

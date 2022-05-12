@@ -6,6 +6,15 @@ bool Core::loop = true;
 
 void Core::Init()
 {
+#pragma region DEBUG
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    //_CrtSetBreakAlloc(241);
+    //_CrtSetBreakAlloc(240);
+    //_CrtSetBreakAlloc(231);
+    //_CrtSetBreakAlloc(230);
+    //_CrtSetBreakAlloc(229);
+#pragma endregion
+
     Engine::GetI()->Init(m_hWnd, m_hInst);
 
     GET_SINGLE(SceneManager)->CreateScene<StartScene>(SCENE_TYPE::START);

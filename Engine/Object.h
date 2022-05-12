@@ -86,7 +86,7 @@ protected:
 	OBJECT_TYPE m_eType = OBJECT_TYPE::Object;
 
 private:
-	GENERATE_CLASS_TYPE_INFO(Object)
+	//GENERATE_CLASS_TYPE_INFO(Object)
 
 private:
 	static uint64 Count;
