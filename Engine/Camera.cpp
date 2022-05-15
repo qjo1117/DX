@@ -3,7 +3,7 @@
 
 Camera::Camera() 
 {
-    m_eType = OBJECT_TYPE::Camera;
+    m_eType = GameObject_TYPE::Camera;
 }
 
 Camera::~Camera()
@@ -12,33 +12,33 @@ Camera::~Camera()
 
 void Camera::Awake()
 {
-    Object::Awake();
+    GameObject::Awake();
     INPUT->AddKey("MouseBack", 'Z');
     INPUT->AddKey("MouseForward", 'C');
 }
 
 void Camera::Update()
 {
-    Object::Update();
-    {
-        Vec3 move = Utils::Zero();
-        float speed = 100.0f;
-        if (INPUT->KeyPress("MouseForward")) {
-            move.z += speed;
-        }
-        if (INPUT->KeyPress("MouseBack")) {
-            move.z -= speed;
-        }
+    GameObject::Update();
+    //{
+    //    Vec3 move = Utils::Zero();
+    //    float speed = 100.0f;
+    //    if (INPUT->KeyPress("MouseForward")) {
+    //        move.z += speed;
+    //    }
+    //    if (INPUT->KeyPress("MouseBack")) {
+    //        move.z -= speed;
+    //    }
 
-        move *= DELTATIME;
+    //    move *= DELTATIME;
 
-        GetTransform()->Translation(move);
-    }
+    //    GetTransform()->Translation(move);
+    //}
 }
 
 void Camera::FinalUpdate()
 {
-    Object::FinalUpdate();
+    GameObject::FinalUpdate();
     
 
     ViewMatrixUpdate();

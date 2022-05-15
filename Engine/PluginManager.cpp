@@ -73,7 +73,7 @@ bool PluginManager::LoadPlugin(const wstring& p_fileName)
         return false;
     }
 
-    IPlugin* pPlugin = pFunc(*this);
+    IPlugin* pPlugin = pFunc();
     if (pPlugin == nullptr) {
         return false;
     }

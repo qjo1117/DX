@@ -1,4 +1,7 @@
+
 #pragma once
+
+#define RESOURCES GET_SINGLE(ResourcesManager)
 
 enum class RESOURCE_TPYE
 {
@@ -6,7 +9,6 @@ enum class RESOURCE_TPYE
 	TEXTURE,
 	END,
 };
-
 
 
 /*-------------------------
@@ -19,7 +21,12 @@ public:
 	void Init();
 	void End();
 
+	Ref<class Texture> LoadFromTexture(const wstring& p_path);
 
+private:
+	vector<Ref<class Texture>> m_vecReesources;
+	//using KeyObjMap = std::map<wstring, Ref<GameObject>>;
+	//array<KeyObjMap, RESOURCE_TPYE> _resources;
 };
 
 

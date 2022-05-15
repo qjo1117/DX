@@ -9,6 +9,7 @@
 #define PLUGINDECL __declspec(dllimport)
 #endif
 
+
 #include <string>
 using namespace std;
 
@@ -19,18 +20,20 @@ class IPlugin
 public:
 	virtual ~IPlugin() { }
 
-	virtual bool Init() {};
-	virtual bool Update() {};
-	virtual bool Render() {};
-	virtual bool End() {};
-	virtual const std::string GetName() {};
+	virtual bool Init() { return false; }
+	virtual bool Update() { return false; }
+	virtual bool Render() { return false; }
+	virtual bool End() { return false; }
+	virtual const std::string GetName() { return "IPlugin"; }
 };
 
-typedef IPlugin* (*CREATEPLUGIN)(PluginManager& mgr);
+typedef IPlugin* (*CREATEPLUGIN)();
 
-
-extern "C" PLUGINDECL IPlugin* CreatePlugin(PluginManager & mgr);
-
+#define CREATE_PLUGIN(Plugin)						\
+extern "C" PLUGINDECL IPlugin * CreatePlugin()		\
+{													\
+	return new Plugin();							\
+}												  
 
 
 #endif

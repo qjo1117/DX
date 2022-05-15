@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Object.h"
+#include "GameObject.h"
 
 /* ----------------------
 		Camera
@@ -17,7 +17,7 @@ struct CameraInfo
 	float aspect = 1.0f;
 };
 
-class Camera : public Object
+class Camera : public GameObject
 {
 public:
 	Camera();
@@ -38,8 +38,8 @@ private:
 	void ProjMatrixUpdate();
 
 private:
-	Matrix m_matView = Utils::Identity();
-	Matrix m_matProj = Utils::Identity();
+	Matrix m_matView = Utils::Identity;
+	Matrix m_matProj = Utils::Identity;
 
 	CameraInfo m_info;
 };

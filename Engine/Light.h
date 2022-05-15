@@ -2,7 +2,7 @@
 
 
 
-#include "Object.h"
+#include "GameObject.h"
 
 
 /* ----------------------
@@ -27,7 +27,7 @@ struct LightInfo
     float           phi = 0.0f;             
 };
 
-class Light : public Object
+class Light : public GameObject
 {
 public:
     Light();

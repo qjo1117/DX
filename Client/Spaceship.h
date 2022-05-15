@@ -1,7 +1,6 @@
 #pragma once
 
-
-#include "Box.h"
+#include "GameObject.h"
 
 enum SpacesParts
 {
@@ -21,7 +20,7 @@ enum PlayerMode
 };
 
 class Spaceship :
-    public Object
+    public GameObject
 {
 public:
 	virtual ~Spaceship();
@@ -42,7 +41,7 @@ private:
 	void CameraQuterMode();
 
 private:
-	vector<Ref<Object>> m_vecParts;
+	vector<Ref<GameObject>> m_vecParts;
 
 	Ref<class Camera> m_pCamera = nullptr;
 

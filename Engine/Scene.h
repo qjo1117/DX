@@ -1,6 +1,6 @@
 #pragma once
 
-class Object;
+class GameObject;
 
 /*----------
 	Scene
@@ -25,31 +25,31 @@ public:
 	Ref<class Camera> GetMainCamera();
 
 	template<typename T>
-	Ref<T> CreateObject();
+	Ref<T> CreateGameObject();
 public:
 	/* ----- Helper Function ----- */
-	void AddObject(Ref<Object> p_pObject);
-	void RemoveObject(Ref<Object> p_pObject);
-	Ref<Object> FindObject(const wstring& p_strName);
+	void AddGameObject(Ref<GameObject> p_pGameObject);
+	void RemoveGameObject(Ref<GameObject> p_pGameObject);
+	Ref<GameObject> FindGameObject(const wstring& p_strName);
 
 	const wstring& GetName() { return m_strName; }
 	void SetName(const wstring& p_strName) { m_strName = p_strName; }
 
-	vector<Ref<Object>>& GetObjects() { return m_vecObjects; }
+	vector<Ref<GameObject>>& GetGameObjects() { return m_vecGameObjects; }
 
 protected:
-	/* ----- Scene Object Mapping Variable ----- */
-	vector<Ref<Object>> m_vecObjects;
+	/* ----- Scene GameObject Mapping Variable ----- */
+	vector<Ref<GameObject>> m_vecGameObjects;
 	Ref<class Camera> m_pCamera = nullptr;
 
 	wstring m_strName = L"BaseScene";
 };
 
 template<typename T>
-Ref<T> Scene::CreateObject()
+Ref<T> Scene::CreateGameObject()
 {
 	Ref<T> obj = make_shared<T>();
 	static_pointer_cast<T>(obj)->Init();
-	AddObject(obj);
+	AddGameObject(obj);
 	return obj;
 }

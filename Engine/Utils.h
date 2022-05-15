@@ -176,13 +176,24 @@ public:
 	{
 		return -Utils::Forward();
 	}
-
-	static Matrix Identity()
+	static Vec3 Normalize(const Vec3& vec)
 	{
-		Matrix mat;
-		::D3DXMatrixIdentity(&mat);
-		return mat;
+		Vec3 ret = vec;
+		float dist = (vec.x * vec.x) + (vec.y * vec.y) + (vec.z * vec.z);
+		ret = vec / dist;
+		return ret;
 	}
+	inline static const float DX_PI = D3DX_PI;
+	inline static const float DX_2PI = 2 * D3DX_PI;
+
+
+	inline static const Matrix Identity =
+	{
+		1,0,0,0,
+		0,1,0,0,
+		0,0,1,0,
+		0,0,0,1,
+	};
 
 
 	static Vec3 Forward()

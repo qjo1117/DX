@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Object.h"
+#include "GameObject.h"
 
 struct TorusInfo
 {
@@ -10,7 +10,7 @@ struct TorusInfo
 	uint32	rings = 20;
 };
 
-class Torus : public Object
+class Torus : public GameObject
 {
 public:
 	virtual void Init();

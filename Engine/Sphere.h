@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Object.h"
+#include "GameObject.h"
 
 /* ----------------------
 		Sphere
@@ -14,7 +14,7 @@ struct SphereInfo
 };
 
 
-class Sphere : public Object
+class Sphere : public GameObject
 {
 public:
 	Sphere();

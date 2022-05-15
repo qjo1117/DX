@@ -38,11 +38,13 @@ private:
 	void AddFileInfo(fs::path p_pathInfo, const string& p_strPath);
 	Ref<FileInfo> FindFileInfo(Ref<FileInfo> p_info, const vector<string>& p_fileName, int32 index = 0);
 
+	bool ExtensionCheck(const string& p_strPath);
+
 	void CreateFileInfos();
-	void ClearFileInfos(Ref<FileInfo> p_info);
+	void ClearAllFileInfos(Ref<FileInfo> p_info);
 
-	void CheckUpdateFileInfo(Ref<FileInfo> p_info);
-
+	int32 CheckFileInfo(Ref<FileInfo> p_info);
+	void UpdateFileInfo(Ref<FileInfo> p_info);
 public:
 	void FindFileInfo(Ref<FileInfo> root, vector<Ref<FileInfo>>& p_vecFileInfo, const string& extension);
 
@@ -54,5 +56,10 @@ private:
 
 	fs::path m_path;
 	fs::file_time_type m_time;
+
+	vector<string>	m_vecExtension;
+
+	uint32 m_iCount = 0;
+	vector<Ref<FileInfo>> m_vecUpdateList;
 };
 

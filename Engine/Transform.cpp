@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Transform.h"
-#include "Object.h"
+#include "GameObject.h"
 
 Transform::Transform()
 {
@@ -47,14 +47,14 @@ Matrix Transform::GetMatrixScale()
 	return Utils::CreateScaling(m_localScale);
 }
 
-void Transform::SetObj(Ref<class Object> p_pObj)
+void Transform::SetObj(Ref<class GameObject> p_pObj)
 {
-	m_pObj = p_pObj;
+	m_pOwner = p_pObj;
 }
 
-inline Ref<class Object> Transform::GetObj()
+inline Ref<class GameObject> Transform::GetObj()
 {
-	return m_pObj.lock();
+	return m_pOwner.lock();
 }
 
 void Transform::SetParent(Ref<Transform> p_pParent)
@@ -72,7 +72,7 @@ Matrix Transform::GetParentWorldMatrix(WRef<Transform> p_parent)
 	// TODO : 아마 사용하다가 한번은 이상함을 느낄듯?
 
 	if (p_parent.lock() == nullptr) {
-		return Utils::Identity();
+		return Utils::Identity;
 	}
 
 	Matrix mat = p_parent.lock()->GetLocalMatrix();

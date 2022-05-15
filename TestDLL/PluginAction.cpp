@@ -5,27 +5,21 @@ bool PluginAction::Init()
 {
     int32 size = 0;
 
-    
+    EDITOR->Log("PluginAction Init");
 
     return true;
 }
 
 bool PluginAction::Update()
 {
-    return false;
+    EDITOR->Log("PluginAction Update");
+
+    return true;
 }
 
 bool PluginAction::Render()
 {
-    return false;
+
+    return true;
 }
 
-bool PluginAction::End()
-{
-    return false;
-}
-
-PLUGINDECL IPlugin* CreatePlugin(PluginManager& mgr)
-{
-    return new PluginAction(mgr);
-}

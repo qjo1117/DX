@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Object.h"
+#include "GameObject.h"
 
 /* ----------------------
 		Box
@@ -13,7 +13,7 @@ struct BoxInfo
 	float depth = 1.0f;
 };
 
-class Box : public Object
+class Box : public GameObject
 {
 public:
 	virtual ~Box();

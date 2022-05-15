@@ -4,7 +4,7 @@
 #include "Camera.h"
 #include "DirectoryManager.h"
 #include "PluginManager.h"
-
+#include "PathManager.h"
 
 int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
 {
@@ -24,10 +24,12 @@ int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
 	GET_SINGLE(Timer)->Init(hWnd);
 	GET_SINGLE(Input)->Init(hWnd);
 	GET_SINGLE(DirectoryManager)->Init();
-	GET_SINGLE(PluginManager)->Init();
+	GET_SINGLE(PathManager)->Init();
 #ifdef DEF_EDITOR
 	GET_SINGLE(EditorManager)->Init(hWnd);
 #endif
+
+	GET_SINGLE(PluginManager)->Init();
 
 	DEVICE->SetRenderState(D3DRS_ZENABLE, TRUE);
 
@@ -42,10 +44,13 @@ int32 Engine::Update()
 	GET_SINGLE(Input)->Update();
 	GET_SINGLE(SceneManager)->Update();
 	GET_SINGLE(DirectoryManager)->Update();
-	GET_SINGLE(PluginManager)->Update();
+
 #ifdef DEF_EDITOR
 	GET_SINGLE(EditorManager)->Update();
 #endif
+
+	GET_SINGLE(PluginManager)->Update();
+
 
 	return 0;
 }

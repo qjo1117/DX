@@ -38,7 +38,7 @@ void StartScene::Awake()
 		// ≈‰º∫
 		Ref<Planet> sturn;
 		sturn = CreatePlanat(L"Sturn", Vec3{ 120.0f,0.0f,30.0f }, 7.5f, 34.0f, Utils::Gold(), L"Sun");
-		Ref<Torus> sturnTorus = CreateObject<Torus>();
+		Ref<Torus> sturnTorus = CreateGameObject<Torus>();
 		Vec3 scale = Utils::One() * 1.6f;
 		scale.z = 0.3f;
 		sturnTorus->GetTransform()->SetLocalScale(scale);
@@ -61,13 +61,13 @@ void StartScene::Awake()
 
 	// Spaceship
 	{
-		m_pPlayer = CreateObject<Spaceship>();
+		m_pPlayer = CreateGameObject<Spaceship>();
 		m_pPlayer->SetName(L"Player");
 
 	}
 
 	{
-		m_pPointLight = CreateObject<Light>();
+		m_pPointLight = CreateGameObject<Light>();
 	 	m_pPointLight->SetName(L"Point_Light");
 		m_pPointLight->GetLightInfo().type = D3DLIGHTTYPE::D3DLIGHT_POINT;
 		m_pPointLight->GetTransform()->SetLocalPosition(Utils::Up() * 10.0f);
@@ -79,7 +79,7 @@ void StartScene::Awake()
 	}
 
 	{
-		Ref<Light> light = CreateObject<Light>();
+		Ref<Light> light = CreateGameObject<Light>();
 		light->SetName(L"Player_Point_Light");
 
 		light->GetLightInfo().type = D3DLIGHTTYPE::D3DLIGHT_POINT;
@@ -95,7 +95,7 @@ void StartScene::Awake()
 
 
 	{
-		Ref<Box> plane = CreateObject<Box>();
+		Ref<Box> plane = CreateGameObject<Box>();
 		plane->SetName(L"Plane");
 		plane->GetTransform()->SetLocalScale((Utils::One() - Utils::Up()) * 10000.0f);
 		plane->GetTransform()->SetLocalPosition(Utils::Down() * 100.0f);
@@ -105,7 +105,7 @@ void StartScene::Awake()
 
 
 	{
-		m_pCamera = CreateObject<Camera>();
+		m_pCamera = CreateGameObject<Camera>();
 		m_pCamera->Init();
 		m_pCamera->SetName(L"MainCamera");
 		m_pCamera->GetTransform()->SetLocalPosition(Vec3{ 0.0f, 100.0f, -1000.0f });
@@ -113,7 +113,7 @@ void StartScene::Awake()
 
 	// Directional
 	{
-		Ref<Light> light = CreateObject<Light>();
+		Ref<Light> light = CreateGameObject<Light>();
 		light->SetName(L"Directional_Light_Down");
 		light->GetLightInfo().type = D3DLIGHTTYPE::D3DLIGHT_DIRECTIONAL;
 		light->GetLightInfo().direction = Utils::Down();
@@ -150,7 +150,7 @@ void StartScene::End()
 
 Ref<Planet> StartScene::CreatePlanat(const wstring& p_strName, const Vec3& pos, float scaling, float speed, const Color& color, const wstring& p_strParent)
 {
-	Ref<Planet> planet = CreateObject<Planet>();
+	Ref<Planet> planet = CreateGameObject<Planet>();
 
 	planet->SetName(p_strName);
 	planet->GetMaterial().SetSimpleColor(color , 0.3f);
@@ -162,11 +162,11 @@ Ref<Planet> StartScene::CreatePlanat(const wstring& p_strName, const Vec3& pos, 
 
 
 	if ((p_strParent == L"" || p_strParent.empty()) == false) {
-		Ref<Object> parent = FindObject(p_strParent);
+		Ref<GameObject> parent = FindGameObject(p_strParent);
 		if (parent == nullptr) {
 			return planet;
 		}
-		Ref<Object> obj = CreateObject<Object>();
+		Ref<GameObject> obj = CreateGameObject<GameObject>();
 		obj->SetName(planet->GetName() + L"_Parent");
 		obj->GetTransform()->SetLocalScale(Utils::One());
 		obj->GetTransform()->SetLocalRotation(Utils::One());

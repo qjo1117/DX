@@ -40,8 +40,8 @@ public:
 	// 더 길어지게 하고 싶지않음
 	void Translation(const Vec3& move) { m_localPosition += move; }
 
-	void SetObj(Ref<class Object> p_pObj);
-	inline Ref<class Object> GetObj();
+	void SetObj(Ref<class GameObject> p_pObj);
+	inline Ref<class GameObject> GetObj();
 
 
 	void SetParent(Ref<Transform> p_pParent);
@@ -56,12 +56,12 @@ private:
 	Vec3 m_localRotation = Utils::Zero();
 	Vec3 m_localScale = Utils::One();
 
-	Matrix m_matLocal = Utils::Identity();
-	Matrix m_matWorld = Utils::Identity();
+	Matrix m_matLocal = Utils::Identity;
+	Matrix m_matWorld = Utils::Identity;
 
 	WRef<Transform>	m_pParent;
 	vector<WRef<Transform>> m_vecChilds;
 
-	WRef<class Object> m_pObj;
+	WRef<class GameObject> m_pOwner;
 };
 

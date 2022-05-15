@@ -12,13 +12,13 @@ Spaceship::~Spaceship()
 
 void Spaceship::Init()
 {
-	Object::Init();
+	GameObject::Init();
 
 }
 
 void Spaceship::Start()
 {
-	Object::Start();
+	GameObject::Start();
 	m_vecParts.resize(SpacesParts::SPACESPARTS_END);
 
 	GetMaterial().ambient = GetMaterial().diffuse = Utils::White();
@@ -32,8 +32,8 @@ void Spaceship::Start()
 
 	// HEAD
 	{
-		Ref<Object> obj = m_vecParts[SpacesParts::HEAD];
-		obj = scene->CreateObject<Sphere>();
+		Ref<GameObject> obj = m_vecParts[SpacesParts::HEAD];
+		obj = scene->CreateGameObject<Sphere>();
 		obj->SetName(m_strName + L"Head");
 
 		obj->GetMaterial().SetSimpleColor(Utils::White());
@@ -45,8 +45,8 @@ void Spaceship::Start()
 
 	// BODY
 	{
-		Ref<Object> obj = m_vecParts[SpacesParts::BODY];
-		obj = scene->CreateObject<Box>();
+		Ref<GameObject> obj = m_vecParts[SpacesParts::BODY];
+		obj = scene->CreateGameObject<Box>();
 		obj->SetName(m_strName + L"Body");
 
 		obj->GetMaterial().SetSimpleColor(Utils::Cyan());
@@ -58,8 +58,8 @@ void Spaceship::Start()
 
 	// RIGHT_HANDLE
 	{
-		Ref<Object> obj = m_vecParts[SpacesParts::RIGHT_HANDLE];
-		obj = scene->CreateObject<Box>();
+		Ref<GameObject> obj = m_vecParts[SpacesParts::RIGHT_HANDLE];
+		obj = scene->CreateGameObject<Box>();
 		obj->SetName(m_strName + L"Right_Handle");
 
 		obj->GetMaterial().SetSimpleColor(Utils::White());
@@ -71,8 +71,8 @@ void Spaceship::Start()
 
 	// LEFT_HANDLE
 	{
-		Ref<Object> obj = m_vecParts[SpacesParts::LEFT_HANDLE];
-		obj = scene->CreateObject<Box>();
+		Ref<GameObject> obj = m_vecParts[SpacesParts::LEFT_HANDLE];
+		obj = scene->CreateGameObject<Box>();
 		obj->SetName(m_strName + L"Left_Handle");
 
 		obj->GetMaterial().SetSimpleColor(Utils::White());
@@ -84,8 +84,8 @@ void Spaceship::Start()
 
 	// RIGHT_FOOT
 	{
-		Ref<Object> obj = m_vecParts[SpacesParts::RIGHT_FOOT];
-		obj = scene->CreateObject<Box>();
+		Ref<GameObject> obj = m_vecParts[SpacesParts::RIGHT_FOOT];
+		obj = scene->CreateGameObject<Box>();
 		obj->SetName(m_strName + L"Left_Foot");
 
 		obj->GetMaterial().SetSimpleColor(Utils::White());
@@ -97,8 +97,8 @@ void Spaceship::Start()
 
 	// LEFT_FOOT
 	{
-		Ref<Object> obj = m_vecParts[SpacesParts::LEFT_FOOT];
-		obj = scene->CreateObject<Box>();
+		Ref<GameObject> obj = m_vecParts[SpacesParts::LEFT_FOOT];
+		obj = scene->CreateGameObject<Box>();
 		obj->SetName(m_strName + L"Left_Foot");
 
 		obj->GetMaterial().SetSimpleColor(Utils::White());
@@ -108,7 +108,7 @@ void Spaceship::Start()
 		transform->SetParent(GetTransform());
 	}
 
-	SetCamera(static_pointer_cast<Camera>(scene->FindObject(L"MainCamera")));
+	SetCamera(static_pointer_cast<Camera>(scene->FindGameObject(L"MainCamera")));
 
 	INPUT->AddKey('1', "OneMode");
 	INPUT->AddKey('2', "QuterMode");
@@ -119,7 +119,7 @@ void Spaceship::Start()
 
 void Spaceship::Update()
 {
-	Object::Update();
+	GameObject::Update();
 
 	PlayerMove();
 	PlayerRotation();

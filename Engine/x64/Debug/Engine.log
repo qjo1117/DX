@@ -1,2 +1,22 @@
-﻿  Engine.cpp
+﻿  Box.cpp
+  Camera.cpp
+D:\DX9\DX\Engine\Input.h(79,1): warning C4311: '형식 캐스트': 'const char *'에서 'uint32'(으)로 포인터가 잘립니다.
+D:\DX9\DX\Engine\Camera.cpp(16): message : 컴파일되는 함수 템플릿 인스턴스화 'void Input::AddKey<char[10],char>(const T (&),const char &)'에 대한 참조를 확인하세요.
+          with
+          [
+              T=char [10]
+          ]
+D:\DX9\DX\Engine\Input.h(79,1): warning C4302: '형식 캐스트': 'const char *'에서 'uint32'(으)로 잘립니다.
+  Engine.cpp
+  GameObject.cpp
+  Light.cpp
+  PluginManager.cpp
+  Quad.cpp
+  Scene.cpp
+  SceneManager.cpp
+  Sphere.cpp
+  Timer.cpp
+  Torus.cpp
+  Transform.cpp
+  Triangle.cpp
   Engine.vcxproj -> D:\DX9\DX\Output\Engine.lib

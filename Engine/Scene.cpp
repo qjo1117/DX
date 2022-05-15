@@ -4,7 +4,7 @@
 
 Scene::Scene()
 {
-	m_vecObjects.reserve(1000);
+	m_vecGameObjects.reserve(1000);
 
 
 }
@@ -15,25 +15,25 @@ Scene::~Scene()
 
 void Scene::Awake()
 {
-	std::sort(m_vecObjects.begin(), m_vecObjects.end(), [](Ref<Object>& a, Ref<Object>& b) { return a->GetType() < b->GetType(); });
+	std::sort(m_vecGameObjects.begin(), m_vecGameObjects.end(), [](Ref<GameObject>& a, Ref<GameObject>& b) { return a->GetType() < b->GetType(); });
 
 	if (m_pCamera == nullptr) {
-		for (Ref<Object>& obj : m_vecObjects) {
-			if (obj->GetType() == static_cast<uint32>(OBJECT_TYPE::Camera)) {
+		for (Ref<GameObject>& obj : m_vecGameObjects) {
+			if (obj->GetType() == static_cast<uint32>(GameObject_TYPE::Camera)) {
 				m_pCamera = static_pointer_cast<Camera>(obj);
 				break;
 			}
 		}
 	} 
 
-	for (Ref<Object>& obj : m_vecObjects) {
+	for (Ref<GameObject>& obj : m_vecGameObjects) {
 		obj->Awake();
 	}
 }
 
 void Scene::Start()
 {
-	for (Ref<Object>& obj : m_vecObjects) {
+	for (Ref<GameObject>& obj : m_vecGameObjects) {
 		if (obj->GetIsEnable() == false) {
 			continue;
 		}
@@ -43,7 +43,7 @@ void Scene::Start()
 
 void Scene::Update()
 {
-	for (Ref<Object>& obj : m_vecObjects) {
+	for (Ref<GameObject>& obj : m_vecGameObjects) {
 		if (obj->GetIsEnable() == false) {
 			continue;
 		}
@@ -53,7 +53,7 @@ void Scene::Update()
 
 void Scene::FinalUpdate()
 {
-	for (Ref<Object>& obj : m_vecObjects) {
+	for (Ref<GameObject>& obj : m_vecGameObjects) {
 		if (obj->GetIsEnable() == false) {
 			continue;
 		}
@@ -64,11 +64,11 @@ void Scene::FinalUpdate()
 
 void Scene::End()
 {
-	for (Ref<Object>& obj : m_vecObjects) {
+	for (Ref<GameObject>& obj : m_vecGameObjects) {
 		obj->End();
 		obj = nullptr;
 	}
-	m_vecObjects.clear();
+	m_vecGameObjects.clear();
 
 	if (m_pCamera) {
 		m_pCamera->End();
@@ -78,7 +78,7 @@ void Scene::End()
 
 void Scene::Render()
 {
-	for (Ref<Object>& obj : m_vecObjects) {
+	for (Ref<GameObject>& obj : m_vecGameObjects) {
 		if (obj->GetIsEnable() == false) {
 			continue;
 		}
@@ -91,22 +91,22 @@ Ref<class Camera> Scene::GetMainCamera()
 	return m_pCamera;
 }
 
-void Scene::AddObject(Ref<Object> p_pObject)
+void Scene::AddGameObject(Ref<GameObject> p_pGameObject)
 {
-	m_vecObjects.push_back(p_pObject);
+	m_vecGameObjects.push_back(p_pGameObject);
 }
 
-void Scene::RemoveObject(Ref<Object> p_pObject)
+void Scene::RemoveGameObject(Ref<GameObject> p_pGameObject)
 {
-	auto findGo = std::find(m_vecObjects.begin(), m_vecObjects.end(), p_pObject);
-	if (findGo != m_vecObjects.end()) {
-		m_vecObjects.erase(findGo);
+	auto findGo = std::find(m_vecGameObjects.begin(), m_vecGameObjects.end(), p_pGameObject);
+	if (findGo != m_vecGameObjects.end()) {
+		m_vecGameObjects.erase(findGo);
 	}
 }
 
-Ref<Object> Scene::FindObject(const wstring& p_strName)
+Ref<GameObject> Scene::FindGameObject(const wstring& p_strName)
 {
-	for (Ref<Object>& obj : m_vecObjects) {
+	for (Ref<GameObject>& obj : m_vecGameObjects) {
 		if (obj->GetName().compare(p_strName) == 0) {
 			return obj;
 		}

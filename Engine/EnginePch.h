@@ -1,6 +1,7 @@
 #pragma once
 
 
+
 #include <d3dx9.h>
 #include <d3dx9math.h>
 #include <d3d9.h>
@@ -19,12 +20,10 @@ using Color = D3DXCOLOR;
 
 #include "StdPch.h"
 
-#ifdef _DEBUG
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_dx9.h"
 #include "ImGui/imgui_impl_win32.h"
 #pragma comment(lib, "Editor.lib")
-#endif
 
 #include "Utils.h"
 

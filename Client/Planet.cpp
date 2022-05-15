@@ -48,7 +48,7 @@ void Planet::Update()
 		parent->SetLocalRotation(rotation);
 		
 		vector<wstring> tokens = Utils::Split(parent->GetObj()->GetName(), '_');
-		Ref<Object> originParent = GET_SINGLE(SceneManager)->GetCurrentScene()->FindObject(tokens[0]);
+		Ref<GameObject> originParent = GET_SINGLE(SceneManager)->GetCurrentScene()->FindGameObject(tokens[0]);
 		
 		Vec3 position = originParent->GetTransform()->GetLocalPosition() + GetTransform()->GetLocalPosition();
 		position = Utils::Vec3ToMatrix(position, originParent->GetTransform()->GetMatrixRotation());

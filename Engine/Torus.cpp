@@ -3,26 +3,26 @@
 
 void Torus::Init()
 {
-	Object::Init();
+	GameObject::Init();
 
 	::D3DXCreateTorus(DEVICE, m_info.innerRadius, m_info.outerRadius, m_info.sides, m_info.rings,
-		&m_pMesh, nullptr);
+		&m_pMeshBuffer, nullptr);
 }
 
 void Torus::Awake()
 {
-	Object::Awake();
+	GameObject::Awake();
 
 
 }
 
 void Torus::Update()
 {
-	Object::Update();
+	GameObject::Update();
 
 }
 
 void Torus::End()
 {
-	Object::End();
+	GameObject::End();
 }

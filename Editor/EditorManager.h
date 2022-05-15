@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Engine/EnginePch.h"
+
 #define DEF_EDITOR
 
 #define EDITOR GET_SINGLE(EditorManager)
@@ -12,7 +14,7 @@ inline static struct Register_##Class_##Func			\
 {														\
 	Register_##Class_##Func()							\
 	{													\
-		EDITOR->RegisterMenuBar(Title, Func);			\
+		EDITOR->RegisterMenuBar(Title, Class::Func);	\
 	}													\
 } Register_##Class_##Func					
 
@@ -56,7 +58,7 @@ public:
 	virtual ~IEditor() {}
 
 	virtual void Show() = 0;
-	virtual void End() = 0;
+	virtual void End() {};
 	void ShowEditor() { ImGui::Begin(Title.c_str()); Show(); ImGui::End(); }
 
 	/* ------ Property ------ */

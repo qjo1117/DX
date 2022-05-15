@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 class IPlugin;
 
 struct PluginInfo
@@ -25,3 +27,5 @@ public:
 private:
 	PRIVATE_PROPERTY(vector<PluginInfo>, vecPlugins);
 };
+
+

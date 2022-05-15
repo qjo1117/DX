@@ -8,6 +8,7 @@
 #include "Input.h"
 #include "Device.h"
 #include "SceneManager.h"
+#include "ResourcesManager.h"
 
 #include "../Editor/EditorManager.h"
 
@@ -21,7 +22,7 @@ public:
 	int32		width = 1280;
 	int32		height = 640;
 
-	D3DXCOLOR	color = D3DCOLOR_XRGB(0, 0, 0);
+	D3DXCOLOR	color = D3DCOLOR_XRGB(0, 125, 125);
 
 	HWND		hWnd = nullptr;			// 윈도우 핸드
 	HINSTANCE	hInst = nullptr;	// Inst

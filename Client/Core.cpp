@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Core.h"
 #include "StartScene.h"
+#include "TextureScene.h"
 
 bool Core::loop = true;
 
@@ -17,9 +18,12 @@ void Core::Init()
 
     Engine::GetI()->Init(m_hWnd, m_hInst);
 
-    GET_SINGLE(SceneManager)->CreateScene<StartScene>(SCENE_TYPE::START);
 
-    GET_SINGLE(SceneManager)->LoadScene(SCENE_TYPE::START);
+    GET_SINGLE(SceneManager)->CreateScene<TextureScene>(SCENE_TYPE::TEXTURE);
+    GET_SINGLE(SceneManager)->LoadScene(SCENE_TYPE::TEXTURE);
+    //GET_SINGLE(SceneManager)->CreateScene<StartScene>(SCENE_TYPE::START);
+    //GET_SINGLE(SceneManager)->LoadScene(SCENE_TYPE::START);
+
 }
 
 void Core::Update()

@@ -5,7 +5,7 @@ uint32 Light::LightCount = 0;
 
 Light::Light()
 {
-    m_eType = OBJECT_TYPE::Light;
+    m_eType = GameObject_TYPE::Light;
     m_iIndex = Light::LightCount++;
 }
 
@@ -15,12 +15,12 @@ Light::~Light()
 
 void Light::Awake()
 {
-    Object::Awake();
+    GameObject::Awake();
 }
 
 void Light::FinalUpdate()
 {
-    Object::FinalUpdate();
+    GameObject::FinalUpdate();
     SetLightUpdate();
 
 }

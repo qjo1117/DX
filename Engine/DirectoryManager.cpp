@@ -1,9 +1,24 @@
 #include "pch.h"
 #include "DirectoryManager.h"
+#include "../Editor/EditorManager.h"
 
 void DirectoryManager::Init()
 {
 	m_path = fs::current_path().remove_filename();
+
+	m_vecUpdateList.reserve(100);
+
+	m_vecExtension.push_back(".h");
+	m_vecExtension.push_back(".hpp");
+	m_vecExtension.push_back(".cpp");
+	m_vecExtension.push_back(".txt");
+	
+	m_vecExtension.push_back(".jpg");
+	m_vecExtension.push_back(".png");
+	m_vecExtension.push_back(".dds");
+	
+	m_vecExtension.push_back(".dll");
+	m_vecExtension.push_back(".lib");
 
 
 	CreateFileInfos();
@@ -11,44 +26,47 @@ void DirectoryManager::Init()
 	/* ------ Test ------ */
 	vector<Ref<FileInfo>> vecFileInfos;
 	FindFileInfo(m_pFileInfo, vecFileInfos, ".h");
+
 }
 
 void DirectoryManager::Update()
 {
 
 	// 갱신
-	//if (m_time != fs::last_write_time(m_path)) {
-	//	m_time = fs::last_write_time(m_path);
-	//	CreateFileInfos();
-	//}
-	//if (CheckUpdateFileInfo(m_pFileInfo)) {
-	//	CreateFileInfos();
-	//}
+	if (m_pFileInfo->Time != fs::last_write_time(m_pFileInfo->PathInfo)) {
+		m_pFileInfo->Time = fs::last_write_time(m_pFileInfo->PathInfo);
+	}
+
+	if (CheckFileInfo(m_pFileInfo) == -1) {
+		CreateFileInfos();
+	}
 
 }
 
 void DirectoryManager::End()
 {
-	ClearFileInfos(m_pFileInfo);
+	ClearAllFileInfos(m_pFileInfo);
 }
-
 void DirectoryManager::AddFileInfo(fs::path p_pathInfo, const string& p_strPath)
 {
 	vector<string> vecPath = Utils::Split(p_strPath, '\\');
 
-	if (p_pathInfo.extension().empty() == true) {
+	if (p_pathInfo.has_extension() == false) {
 		// TODO : 폴더
-		Ref<FileInfo> fileInfo = FindFileInfo(m_pFileInfo, vecPath);
-		if (fileInfo == nullptr) {
-			fileInfo = make_shared<FileInfo>();
-			fileInfo->PathInfo = p_pathInfo;
-			fileInfo->Parent = nullptr;
-			fileInfo->Name = vecPath[vecPath.size() - 1];
-			fileInfo->Type = FILE_TYPE::FOLDER;
-			fileInfo->Time = fs::last_write_time(p_pathInfo);
-			m_pFileInfo = fileInfo;
+
+		if (m_pFileInfo == nullptr) {
+			m_pFileInfo = make_shared<FileInfo>();
+			m_pFileInfo->PathInfo = p_pathInfo;
+			m_pFileInfo->Parent = nullptr;
+			m_pFileInfo->Name = vecPath[vecPath.size() - 1];
+			m_pFileInfo->Type = FILE_TYPE::FOLDER;
+			m_pFileInfo->Time = fs::last_write_time(p_pathInfo);
 		}
 		else {
+			Ref<FileInfo> fileInfo = FindFileInfo(m_pFileInfo, vecPath);
+			if (fileInfo == nullptr) {
+				return;
+			}
 			Ref<FileInfo> tempInfo = make_shared<FileInfo>();
 			tempInfo->PathInfo = p_pathInfo;
 			tempInfo->Parent = fileInfo;
@@ -59,6 +77,10 @@ void DirectoryManager::AddFileInfo(fs::path p_pathInfo, const string& p_strPath)
 		}
 	}
 	else {
+		if (ExtensionCheck(p_strPath) == false) {
+			return;
+		}
+
 		// TODO : 파일
 		Ref<FileInfo> fileInfo = FindFileInfo(m_pFileInfo, vecPath);
 		Ref<FileInfo> tempInfo = make_shared<FileInfo>();
@@ -85,9 +107,20 @@ Ref<FileInfo> DirectoryManager::FindFileInfo(Ref<FileInfo> p_info, const vector<
 	return nullptr;
 }
 
+bool DirectoryManager::ExtensionCheck(const string& p_strPath)
+{
+	uint32 count = 0;
+	for (string& extension : m_vecExtension) {
+		if (p_strPath.find(extension) != string::npos) {
+			return true;
+		}
+	}
+	return false;
+}
+
 void DirectoryManager::CreateFileInfos()
 {
-	ClearFileInfos(m_pFileInfo);
+	ClearAllFileInfos(m_pFileInfo);
 
 	fs::path rootPath = fs::current_path().remove_filename();
 	AddFileInfo(rootPath, "DX");
@@ -99,14 +132,14 @@ void DirectoryManager::CreateFileInfos()
 
 }
 
-void DirectoryManager::ClearFileInfos(Ref<FileInfo> p_info)
+void DirectoryManager::ClearAllFileInfos(Ref<FileInfo> p_info)
 {
 	if (p_info == nullptr) {
 		return;
 	}
 
-	for (auto& info : p_info->File) {
-		ClearFileInfos(info);
+	for (Ref<FileInfo>& info : p_info->File) {
+		ClearAllFileInfos(info);
 		if (info->Parent) {
 			info->Parent = nullptr;
 		}
@@ -116,15 +149,38 @@ void DirectoryManager::ClearFileInfos(Ref<FileInfo> p_info)
 	p_info->File.clear();
 }
 
-void DirectoryManager::CheckUpdateFileInfo(Ref<FileInfo> p_info)
+int32 DirectoryManager::CheckFileInfo(Ref<FileInfo> p_info)
 {
-	//if (p_info->Time != fs::last_write_time(p_info->PathInfo)) {
-	//	return ;
-	//}
-	for (auto& info : p_info->File) {
-		CheckUpdateFileInfo(info);
+	auto time = fs::last_write_time(p_info->PathInfo);
+	if (p_info->Time != time) {
+		m_vecUpdateList.push_back(p_info);
+		return -1;
 	}
-	return;
+	for (Ref<FileInfo>& info : p_info->File) {
+		if (CheckFileInfo(info) == -1) {
+			return -1;
+		}
+	}
+
+	return 0;
+}
+
+void DirectoryManager::UpdateFileInfo(Ref<FileInfo> p_info)
+{
+	fs::path rootPath = p_info->PathInfo;
+	if (rootPath.has_extension() == false) {
+		return;
+	}
+	EDITOR->Log(p_info->Name + "Push");
+	ClearAllFileInfos(p_info);
+
+
+	auto iter = fs::directory_iterator(rootPath);
+	for (auto& entry : iter) {
+		string strPath = entry.path().string();
+		strPath = strPath.substr(rootPath.string().length(), strPath.size());
+		AddFileInfo(entry.path(), strPath);
+	}
 }
 
 void DirectoryManager::FindFileInfo(Ref<FileInfo> root, vector<Ref<FileInfo>>& p_vecFileInfo, const string& extension)

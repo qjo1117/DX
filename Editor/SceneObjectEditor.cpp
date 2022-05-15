@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "SceneObjectEditor.h"
-#include "Object.h"
+#include "GameObject.h"
 
 SceneObjectEditor::~SceneObjectEditor()
 {
@@ -15,7 +15,7 @@ void SceneObjectEditor::Show()
 		}
 	}
 
-	for (auto& obj : m_pScene->GetObjects()) {
+	for (auto& obj : m_pScene->GetGameObjects()) {
 		bool enable = obj->GetIsEnable();
 		if (ImGui::Checkbox(Utils::Wstr2Str(obj->GetName()).c_str(), &enable)) {
 			// TODO : 선택시 어떻게 할지를 결정

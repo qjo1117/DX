@@ -45,7 +45,7 @@
     <ClInclude Include="Device.h">
       <Filter>Engine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
+    <ClInclude Include="GameObject.h">
       <Filter>Object</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
@@ -108,6 +108,24 @@
     <ClInclude Include="StdPch.h">
       <Filter>Utils\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Utils\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Quad.h">
+      <Filter>Object\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Object\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="PathManager.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -122,7 +140,7 @@
     <ClCompile Include="Device.cpp">
       <Filter>Engine\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
+    <ClCompile Include="GameObject.cpp">
       <Filter>Object</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
@@ -166,6 +184,21 @@
     </ClCompile>
     <ClCompile Include="PluginManager.cpp">
       <Filter>Engine\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Quad.cpp">
+      <Filter>Object\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Object\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="PathManager.cpp">
+      <Filter>Engine\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
