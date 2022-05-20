@@ -8,7 +8,7 @@
 
 struct CameraInfo
 {
-	Vec3 look = Utils::Zero();		// 앞을 본다.
+	Vec3 look = Utils::Forward();		// 앞을 본다.
 	Vec3 viewUp = Utils::Up();			// 이건 고정
 
 	float Near = 1.0f;

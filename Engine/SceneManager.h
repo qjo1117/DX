@@ -8,6 +8,7 @@ enum class SCENE_TYPE : uint32
 
 	START,
 	TEXTURE,
+	MESH,
 	STAGE_0,
 	STAGE_1,
 	STAGE_2,

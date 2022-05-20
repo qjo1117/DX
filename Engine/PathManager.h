@@ -3,6 +3,7 @@
 #define BASE_PATH_KEY               "BasePath"
 #define TEXTURE_PATH_KEY            "Texture"
 #define SCENE_PATH_KEY              "Scene"
+#define FBX_PATH_KEY				"FBX"
 
 
 class PathManager

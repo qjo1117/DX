@@ -10,6 +10,9 @@ void ResourcesManager::Init()
 
 void ResourcesManager::End()
 {
+	for (auto& resource : m_vecReesources) {
+		resource = nullptr;
+	}
 }
 
 Ref<Texture> ResourcesManager::LoadFromTexture(const wstring& p_path)

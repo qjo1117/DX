@@ -9,6 +9,8 @@
 #include <strsafe.h>
 #pragma warning( default : 4996 )
 
+#include "CoreGlobal.h"
+
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
 
@@ -20,10 +22,13 @@ using Color = D3DXCOLOR;
 
 #include "StdPch.h"
 
+#ifndef _IMGUI_
+#define _IMGUI_
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_dx9.h"
 #include "ImGui/imgui_impl_win32.h"
 #pragma comment(lib, "Editor.lib")
+#endif
 
 #include "Utils.h"
 

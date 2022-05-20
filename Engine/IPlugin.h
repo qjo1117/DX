@@ -13,6 +13,8 @@
 #include <string>
 using namespace std;
 
+
+
 class PluginManager;
 
 class IPlugin
@@ -20,19 +22,19 @@ class IPlugin
 public:
 	virtual ~IPlugin() { }
 
-	virtual bool Init() { return false; }
-	virtual bool Update() { return false; }
-	virtual bool Render() { return false; }
-	virtual bool End() { return false; }
-	virtual const std::string GetName() { return "IPlugin"; }
+	virtual PLUGINDECL bool Init() { return false; }
+	virtual PLUGINDECL bool Update() { return false; }
+	virtual PLUGINDECL bool Render() { return false; }
+	virtual PLUGINDECL bool End() { return false; }
+	virtual PLUGINDECL const std::string& GetName() { return "IPlugin"; }
 };
 
-typedef IPlugin* (*CREATEPLUGIN)();
+typedef IPlugin* (*CREATEPLUGIN)(PluginManager& manager);
 
-#define CREATE_PLUGIN(Plugin)						\
-extern "C" PLUGINDECL IPlugin * CreatePlugin()		\
-{													\
-	return new Plugin();							\
+#define CREATE_PLUGIN(Plugin)											\
+extern "C" PLUGINDECL IPlugin* CreatePlugin(PluginManager& manager)				\
+{																		\
+	return new Plugin(manager);											\
 }												  
 
 

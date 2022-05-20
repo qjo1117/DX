@@ -2,9 +2,10 @@
 #include "EditorManager.h"
 #include "Engine.h"
 
+#include "DirectoryEditor.h"
 #include "MenuEditor.h"
 #include "SceneObjectEditor.h"
-#include "DirectoryEditor.h"
+
 
 void EditorManager::Init(HWND hWnd)
 {
@@ -47,8 +48,8 @@ void EditorManager::Update()
         MainMenuBar();
         ConsoleEditor();
     }
-    for (IEditor* editor : m_vecEditor) {
-        editor->ShowEditor();
+    for (auto& item : m_vecEditor) {
+        item.second->ShowEditor();
     }
 
     ImGui::EndFrame();
@@ -62,11 +63,16 @@ void EditorManager::Render()
 
 void EditorManager::End()
 {
+    for (auto& log : m_arrLogs) {
+        log.clear();
+    }
+    Recursion_MenuBarClear(m_pMenuBar);
+    m_pMenuBar = nullptr;
 
-    for (IEditor* editor : m_vecEditor) {
-        if (editor != nullptr) {
-            editor->End();
-            SAFEDELETE(editor);
+    for (auto& item : m_vecEditor) {
+        if (item.second != nullptr) {
+            item.second->End();
+            SAFEDELETE(item.second);
         }
     }
     m_vecEditor.clear();
@@ -86,17 +92,17 @@ void EditorManager::RegisterEditor(function<void(void)> p_editor)
 void EditorManager::MainMenuBar()
 {
     if (ImGui::BeginMainMenuBar()) {
-        Ref_MenuPresent(m_pMenuBar);
+        Recursion_MenuPresent(m_pMenuBar);
         ImGui::EndMainMenuBar();
     }
 }
 
-void EditorManager::Ref_MenuPresent(Ref<MenuInfo>& p_info)
+void EditorManager::Recursion_MenuPresent(Ref<MenuInfo>& p_info)
 {
     for (Ref<MenuInfo> info : p_info->vecChildMenu) {
         if (info->IsMenuBar()) {
             if (ImGui::BeginMenu(info->strTitle.c_str())) {
-                Ref_MenuPresent(info);
+                Recursion_MenuPresent(info);
                 ImGui::EndMenu();
             }
         }
@@ -109,16 +115,33 @@ void EditorManager::Ref_MenuPresent(Ref<MenuInfo>& p_info)
     }
 }
 
+void EditorManager::Recursion_MenuBarClear(Ref<MenuInfo> p_pInfo)
+{
+    if (p_pInfo->vecChildMenu.empty()) {
+        p_pInfo->FuncOn = nullptr;
+        p_pInfo = nullptr;
+        return;
+    }
+
+    for (Ref<MenuInfo>& info : p_pInfo->vecChildMenu) {
+        Recursion_MenuBarClear(info);
+        info->FuncOn = nullptr;
+        info = nullptr;
+
+    }
+    p_pInfo = nullptr;
+}
+
 void EditorManager::RegisterMenuBar(const string& p_title, function<void(void)> p_func)
 {
     // 경로를 vector로 받아둔다.
     vector<string> titleToken = Utils::Split(p_title, '/');
 
-    Ref<MenuInfo> ret = Ref_FindMenuBar(m_pMenuBar, titleToken);
+    Ref<MenuInfo> ret = Recursion_FindMenuBar(m_pMenuBar, titleToken);
     ret->FuncOn = p_func;
 }
 
-Ref<MenuInfo> EditorManager::Ref_FindMenuBar(Ref<MenuInfo>& p_info, const vector<string>& title, int32 index)
+Ref<MenuInfo> EditorManager::Recursion_FindMenuBar(Ref<MenuInfo>& p_info, const vector<string>& title, int32 index)
 {
     // 찾은경우
     if (title.size() == index) {
@@ -129,13 +152,13 @@ Ref<MenuInfo> EditorManager::Ref_FindMenuBar(Ref<MenuInfo>& p_info, const vector
         Ref<MenuInfo> ret = make_shared<MenuInfo>();
         ret->strTitle = title[index];
         p_info = ret;
-        return Ref_FindMenuBar(ret, title, ++index);
+        return Recursion_FindMenuBar(ret, title, ++index);
     }
 
     // 순회하는 경우
     for (auto& info : p_info->vecChildMenu) {
         if (title[index] == info->strTitle) {
-            return Ref_FindMenuBar(info, title, ++index);
+            return Recursion_FindMenuBar(info, title, ++index);
         }
     }
 
@@ -143,15 +166,8 @@ Ref<MenuInfo> EditorManager::Ref_FindMenuBar(Ref<MenuInfo>& p_info, const vector
     Ref<MenuInfo> ret = make_shared<MenuInfo>();
     ret->strTitle = title[index];
     p_info->vecChildMenu.push_back(ret);
-    return Ref_FindMenuBar(ret, title, ++index);
+    return Recursion_FindMenuBar(ret, title, ++index);
 }
-
-
-
-//void EditorManager::AddEditor(const string& title, Ref<IEditor> p_editor)
-//{
-//    m_vecEditor.push_back(p_editor);
-//}
 
 void EditorManager::ConsoleEditor()
 {
@@ -208,7 +224,11 @@ void EditorManager::Clear(uint8 state)
     }
 }
 
-void EditorManager::PushEditor(IEditor* editor)
+void EditorManager::PushEditor(const string& name, IEditor* editor)
 {
-    m_vecEditor.push_back(editor);
+    if (m_vecEditor[name]) {
+        return;
+    }
+
+    m_vecEditor[name] = editor;
 }

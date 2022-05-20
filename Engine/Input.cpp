@@ -61,6 +61,15 @@ void Input::Update()
 	::ScreenToClient(m_hWnd, &m_mousePos);
 }
 
+void Input::End()
+{
+	for (auto& key : m_mapKeys) {
+		key.second = nullptr;
+	}
+	m_mapKeys.clear();
+	m_pCreateKey = nullptr;
+}
+
 bool Input::KeyDown(const string& strKey)
 {
 	Ref<KeyInfo> pInfo = Input::FindKey(strKey);

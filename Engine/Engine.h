@@ -31,15 +31,7 @@ public:
 
 class Engine
 {
-private:								
-	Engine() {}
-	~Engine() {}
-public:									
-	static Engine* GetI()
-	{										
-		static Engine instance;
-		return &instance;						
-	}										
+	DECLARE_SINGLE(Engine);
 public:
 	/* ------------ Function --------------- */
 	int32 Init(HWND hWnd, HINSTANCE hInstance);
@@ -55,5 +47,6 @@ public:
 private:
 	/* ------------ Variable --------------- */
 	WindowInfo m_info;
+
 };
 

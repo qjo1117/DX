@@ -31,6 +31,8 @@ public:
 public:
 	bool Init(HWND hWnd);
 	void Update();
+	void End();
+
 	bool KeyDown(const string& strKey);
 	bool KeyPress(const string& strKey);
 	bool KeyUp(const string& strKey);

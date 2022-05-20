@@ -4,6 +4,8 @@
 
 void DirectoryManager::Init()
 {
+	EDITOR->Log("ResourceManager Init");
+
 	m_path = fs::current_path().remove_filename();
 
 	m_vecUpdateList.reserve(100);

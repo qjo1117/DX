@@ -25,6 +25,21 @@
     <ClCompile Include="TexCube.cpp">
       <Filter>Content\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="Tiger.cpp">
+      <Filter>Content\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshScene.cpp">
+      <Filter>Content\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessQueen.cpp">
+      <Filter>Content\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessKing.cpp">
+      <Filter>Content\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessKnight.cpp">
+      <Filter>Content\Mesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -57,6 +72,21 @@
     <ClInclude Include="TexCube.h">
       <Filter>Content\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="Tiger.h">
+      <Filter>Content\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshScene.h">
+      <Filter>Content\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessQueen.h">
+      <Filter>Content\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessKing.h">
+      <Filter>Content\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessKnight.h">
+      <Filter>Content\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Main">
@@ -73,6 +103,9 @@
     </Filter>
     <Filter Include="Content\Texture">
       <UniqueIdentifier>{b58cc947-d60e-4d77-87a9-d37764819297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Mesh">
+      <UniqueIdentifier>{82001750-5dd4-4b39-bd7d-82b3c742db42}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

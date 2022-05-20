@@ -20,6 +20,7 @@ void PathManager::Init()
 	_paths.insert(make_pair<string, wstring>(BASE_PATH_KEY, strPath));
 
 	assert(CreatePath(TEXTURE_PATH_KEY, L"Texture\\"));
+	assert(CreatePath(FBX_PATH_KEY, L"Fbx\\"));
 
 }
 

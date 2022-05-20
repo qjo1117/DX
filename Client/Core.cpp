@@ -2,6 +2,7 @@
 #include "Core.h"
 #include "StartScene.h"
 #include "TextureScene.h"
+#include "MeshScene.h"
 
 bool Core::loop = true;
 
@@ -9,8 +10,8 @@ void Core::Init()
 {
 #pragma region DEBUG
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    //_CrtSetBreakAlloc(241);
-    //_CrtSetBreakAlloc(240);
+    //_CrtSetBreakAlloc(35632);
+    //_CrtSetBreakAlloc(35169);
     //_CrtSetBreakAlloc(231);
     //_CrtSetBreakAlloc(230);
     //_CrtSetBreakAlloc(229);
@@ -19,10 +20,14 @@ void Core::Init()
     Engine::GetI()->Init(m_hWnd, m_hInst);
 
 
-    GET_SINGLE(SceneManager)->CreateScene<TextureScene>(SCENE_TYPE::TEXTURE);
-    GET_SINGLE(SceneManager)->LoadScene(SCENE_TYPE::TEXTURE);
+    //GET_SINGLE(SceneManager)->CreateScene<TextureScene>(SCENE_TYPE::TEXTURE);
+    //GET_SINGLE(SceneManager)->LoadScene(SCENE_TYPE::TEXTURE);
+
     //GET_SINGLE(SceneManager)->CreateScene<StartScene>(SCENE_TYPE::START);
     //GET_SINGLE(SceneManager)->LoadScene(SCENE_TYPE::START);
+
+    GET_SINGLE(SceneManager)->CreateScene<MeshScene>(SCENE_TYPE::MESH);
+    GET_SINGLE(SceneManager)->LoadScene(SCENE_TYPE::MESH);
 
 }
 
@@ -45,6 +50,7 @@ void Core::Render()
 void Core::End()
 {
     GET_SINGLE(Engine)->End();
+    DEL_SINGLE(Engine);
 }
 
 int Core::Run(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow)

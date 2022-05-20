@@ -126,6 +126,9 @@
     <ClInclude Include="PathManager.h">
       <Filter>Engine\Core</Filter>
     </ClInclude>
+    <ClInclude Include="CoreGlobal.h">
+      <Filter>Utils\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -199,6 +202,9 @@
     </ClCompile>
     <ClCompile Include="PathManager.cpp">
       <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreGlobal.cpp">
+      <Filter>Utils\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

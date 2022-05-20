@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Engine/EnginePch.h"
+#include"../Engine/EnginePch.h"
 
 #define DEF_EDITOR
 
@@ -59,10 +59,11 @@ public:
 
 	virtual void Show() = 0;
 	virtual void End() {};
-	void ShowEditor() { ImGui::Begin(Title.c_str()); Show(); ImGui::End(); }
+	void ShowEditor() { if (Enable == false) { return; } ImGui::Begin(Title.c_str(),&m_Enable); Show(); ImGui::End(); }
 
 	/* ------ Property ------ */
 	PRIVATE_PROPERTY(string, Title) = typeid(IEditor).name();
+	PRIVATE_PROPERTY(bool, Enable) = true;
 };
 
 class MenuInfo : public enable_shared_from_this<MenuInfo>
@@ -70,6 +71,14 @@ class MenuInfo : public enable_shared_from_this<MenuInfo>
 public:
 	bool IsMenuItem() { return vecChildMenu.empty(); }
 	bool IsMenuBar() { return !vecChildMenu.empty(); }
+
+	void End()
+	{
+		for (auto& child : vecChildMenu) {
+			child->FuncOn = nullptr;
+			child = nullptr;
+		}
+	}
 
 public:
 	/* ------ Property ------ */
@@ -99,8 +108,9 @@ public:
 	void MainMenuBar();
 
 	void RegisterMenuBar(const string& p_title, function<void(void)> p_func);
-	Ref<MenuInfo> Ref_FindMenuBar(Ref<MenuInfo>& p_info, const vector<string>& title, int32 index = 0);
-	void Ref_MenuPresent(Ref<MenuInfo>& p_info);
+	Ref<MenuInfo> Recursion_FindMenuBar(Ref<MenuInfo>& p_info, const vector<string>& title, int32 index = 0);
+	void Recursion_MenuPresent(Ref<MenuInfo>& p_info);
+	void Recursion_MenuBarClear(Ref<MenuInfo> m_pInfo);
 public:
 	
 	/* ----- Log ------ */
@@ -108,14 +118,17 @@ public:
 	void Log(const string& log, uint8 state = LOG_STATE::LOG);
 	void Clear(uint8 state  = LOG_STATE::LOG | LOG_STATE::ERROR_ | LOG_STATE::WARNING);
 
-	void PushEditor(IEditor* editor);
-
+	void PushEditor(const string& name, IEditor* editor);
+	IEditor* FindEditor(const string& name)
+	{
+		return m_vecEditor[name];
+	}
 private:
 	/* ----- Editor ------ */
 	ImGuiIO* m_pInfo = nullptr;
 	HWND m_hWnd = nullptr;
 
-	vector<IEditor*> m_vecEditor;
+	map<string, IEditor*> m_vecEditor;
 
 	/* ----- Log ------ */
 	uint8 m_eState = LOG_STATE::LOG | LOG_STATE::WARNING | LOG_STATE::ERROR_;
@@ -162,7 +175,10 @@ T* EditorManager::GetWindow()
 		return nullptr;
 	}
 
+	string typeName = typeid(T).name();
+
 	T* window = new T;
-	EDITOR->PushEditor(window);
+	EDITOR->PushEditor(typeName, window);
+	window->Enable = true;
 	return window;
 }

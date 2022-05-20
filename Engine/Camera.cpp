@@ -48,6 +48,7 @@ void Camera::FinalUpdate()
 void Camera::ViewMatrixUpdate()
 {
     Vec3 eye = GetTransform()->GetWorldPosition();
+    Vec3 look = eye;
     D3DXMatrixLookAtLH(&m_matView, &eye, &m_info.look, &m_info.viewUp);
     DEVICE->SetTransform(D3DTS_VIEW, &m_matView);
 }

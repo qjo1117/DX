@@ -2,35 +2,54 @@
 #include "PluginManager.h"
 #include "DirectoryManager.h"
 #include "IPlugin.h"
+#include "../Editor/EditorManager.h"
+#include "Engine.h"
 
-void PluginManager::Init()
+
+
+void PluginManager::Init(EditorManager& p_Editor, Engine& p_Engine)
 {
+    Log("PluginManager Init");
+
+    m_strName = L"Plugin Manager";
+
+
+    m_pEditor = &p_Editor;
+    m_pEngine = &p_Engine;
+
     LoadPlugins();
     for (auto& info : vecPlugins) {
-        info.pPlugin->Init();
+        info->pPlugin->Init();
     }
+
 }
 
 void PluginManager::Update()
 {
     for (auto& info : vecPlugins) {
-        info.pPlugin->Update();
+        info->pPlugin->Update();
     }
 }
 
 void PluginManager::Render()
 {
     for (auto& info : vecPlugins) {
-        info.pPlugin->Render();
+        info->pPlugin->Render();
     }
 }
 
 void PluginManager::End()
 {
     for (auto& info : vecPlugins) {
-        info.pPlugin->End();
-        SAFEDELETE(info.pPlugin);
+        info->pPlugin->End();
+
+        SAFEDELETE(info->pPlugin);
+        ::FreeLibrary(info->hDll);
+
+        info = nullptr;
     }
+    vecPlugins.clear();
+
 }
 
 void PluginManager::LoadPlugins()
@@ -73,16 +92,32 @@ bool PluginManager::LoadPlugin(const wstring& p_fileName)
         return false;
     }
 
-    IPlugin* pPlugin = pFunc();
+    IPlugin* pPlugin = pFunc(*m_pInstance);
     if (pPlugin == nullptr) {
         return false;
     }
 
-    PluginInfo info;
-    info.pPlugin = pPlugin;
-    info.hDll = hDll;
+    Ref<PluginInfo> info = make_shared<PluginInfo>();
+    info->pPlugin = pPlugin;
+    info->hDll = hDll;
 
     m_vecPlugins.push_back(info);
 
     return true;
 }
+
+void PluginManager::Log(const string& log)
+{
+    EDITOR->Log(log);
+}
+
+EditorManager* PluginManager::GetEditor()
+{
+    return m_pEditor;
+}
+
+Engine* PluginManager::GetEngine()
+{
+    return m_pEngine;
+}
+

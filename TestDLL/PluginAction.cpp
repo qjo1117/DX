@@ -1,23 +1,39 @@
 #include "pch.h"
 #include "PluginAction.h"
 
+
 bool PluginAction::Init()
 {
-    int32 size = 0;
+    IPlugin::Init();
+    
 
-    EDITOR->Log("PluginAction Init");
+    /*m_pManager->Log("HelloDLL");*/
+
+    m_pManager->GetEditor()->Log("HelloDLL");
 
     return true;
 }
 
 bool PluginAction::Update()
 {
-    EDITOR->Log("PluginAction Update");
 
+    //EDITOR->Log("PluginAction Update");
+
+
+    
     return true;
 }
 
 bool PluginAction::Render()
+{
+
+
+
+    
+    return true;
+}
+
+bool PluginAction::End()
 {
 
     return true;

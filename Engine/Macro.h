@@ -1,22 +1,39 @@
 #pragma once
 
+#include <mutex>
+
 #define OUT
 
 /* -------- Simple SingleTon -------- */
 
-#define DECLARE_SINGLE(type) 				\
-private:									\
-	type() {}								\
-	~type() {}								\
-public:										\
-static type* GetI()							\
-{											\
-	static type instance;					\
-	return &instance;						\
-}											\
+#define DECLARE_SINGLE(Type) 							\
+private:												\
+	inline static Type* m_pInstance = nullptr;			\
+	Type() {}											\
+	~Type() {}											\
+public:													\
+static Type* GetI()										\
+{														\
+	if (m_pInstance == nullptr) {						\
+		if(m_pInstance == nullptr) {					\
+			m_pInstance = new Type();					\
+		}												\
+	}													\
+	return m_pInstance;									\
+}														\
+static void Delete()									\
+{														\
+	if (m_pInstance != nullptr) {						\
+		if(m_pInstance != nullptr) {					\
+			delete m_pInstance;							\
+		}												\
+	}													\
+	m_pInstance = nullptr;								\
+}
 
 
-#define GET_SINGLE(type)		type::GetI()
+#define GET_SINGLE(Type)		Type::GetI()
+#define DEL_SINGLE(Type)		Type::Delete()
 
 /*---------------
 	  Crash

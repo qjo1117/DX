@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="Box.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CoreGlobal.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="DirectoryManager.h" />
     <ClInclude Include="Engine.h" />
@@ -202,6 +203,7 @@
   <ItemGroup>
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CoreGlobal.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="DirectoryManager.cpp" />
     <ClCompile Include="Engine.cpp" />

@@ -6,6 +6,7 @@
 #include "PluginManager.h"
 #include "PathManager.h"
 
+
 int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
 {
 
@@ -29,7 +30,7 @@ int32 Engine::Init(HWND hWnd, HINSTANCE hInstance)
 	GET_SINGLE(EditorManager)->Init(hWnd);
 #endif
 
-	GET_SINGLE(PluginManager)->Init();
+	GET_SINGLE(PluginManager)->Init(*GET_SINGLE(EditorManager), *GET_SINGLE(Engine));
 
 	DEVICE->SetRenderState(D3DRS_ZENABLE, TRUE);
 
@@ -77,14 +78,33 @@ int32 Engine::Render()
 
 int32 Engine::End()
 {
+	GET_SINGLE(Input)->End();
+
 #ifdef DEF_EDITOR
 	GET_SINGLE(EditorManager)->End();
 #endif
 	GET_SINGLE(PluginManager)->End();
 	GET_SINGLE(DirectoryManager)->End();
 	GET_SINGLE(SceneManager)->End();
+	GET_SINGLE(ResourcesManager)->End();
 	GET_SINGLE(Device)->End();
 
+	/* ------------ DEL ------------ */
+
+#ifdef DEF_EDITOR
+	DEL_SINGLE(EditorManager);
+#endif
+	DEL_SINGLE(PluginManager);
+
+	DEL_SINGLE(DirectoryManager);
+
+	DEL_SINGLE(SceneManager);
+
+	DEL_SINGLE(ResourcesManager);
+	DEL_SINGLE(PathManager);
+	DEL_SINGLE(Input);
+	DEL_SINGLE(Timer);
+	DEL_SINGLE(Device);
 
 	return 0;
 }

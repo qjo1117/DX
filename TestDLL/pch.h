@@ -10,7 +10,11 @@
 // 여기에 미리 컴파일하려는 헤더 추가
 #include "framework.h"
 
+#include "../Engine/CoreGlobal.h"
+#include "../Editor/EditorManager.h"
+#include "../Engine/PluginManager.h"
 
-#include "../Engine/StdPch.h"
+#pragma comment(lib, "Editor.lib")
+#pragma comment(lib, "Engine.lib")
 
 #endif //PCH_H
